@@ -4,77 +4,599 @@ body {
     background-color: #f5f5f5;
     color: #333;
     margin: 0;
+    scroll-behavior: smooth; /* Scroll suave al desplazarse */
 }
 
+/* Header */
 header {
     background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo h1 {
+    margin-left: 10px;
+    font-size: 24px;
+    color: #000000;
+}
+
+.header-nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+    z-index: 1;
+}
+
+.dropdown li {
+    margin-bottom: 10px;
+}
+
+.dropdown li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.language-selector {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.language-selector .language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+    z-index: 1;
+}
+
+.language-selector:hover .language-dropdown {
+    display: block;
+}
+
+.language-dropdown li {
+    margin-bottom: 10px;
+}
+
+.language-dropdown li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.btn-login, .btn-signup {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover, .btn-signup:hover {
+    background-color: #0056b3;
+}
+
+.hamburger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-nav, .header-actions {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+
+    .header-nav.active, 
+    .header-actions.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .dropdown {
+        position: static;
+        box-shadow: none;
+    }
+}
+
+
+
+
+
+/* Sección Hero */
+#hero {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.hero-image img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+.hero-content {
+    max-width: 50%;
+    margin-left: 20px;
+}
+
+.hero-content .cta-button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animación de cambio de color */
+}
+
+.hero-content .cta-button:hover {
+    background-color: #003d82;
+}
+
+/* Sección de Características */
+#features {
+    padding: 50px 0;
+    background-color: #f5f5f5;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature-card {
+    flex: 1 1 22%; /* Ajustar el ancho */
+    margin: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease; /* Animación de desplazamiento */
+    height: 300px; /* Aumentar la altura */
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+}
+
+.feature-image img {
+    width: 100%;
+    height: 150px;/* Ajustar la altura de la imagen */
+    border-top-left-radius: 15px; /* Bordes redondeados */
+    border-top-right-radius: 15px; /* Bordes redondeados */
+}
+
+.feature-content {
     padding: 20px;
     text-align: center;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+/* Sección de Metodologías */
+#methodologies {
+    padding: 50px 0;
+    background-color: #f5f5f5;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+.methodologies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #007BFF;
+.methodology-card {
+    flex: 1 1 30%; /* Ajustar el ancho */
+    margin: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease; /* Animación de desplazamiento */
 }
 
-/* Sección del pie de página */
-footer {
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
+.methodology-card:hover {
+    transform: scale(1.05);
+}
+
+.methodology-image img {
     width: 100%;
-    bottom: 0;
+    height: auto;
+    border-top-left-radius: 15px; /* Bordes redondeados */
+    border-top-right-radius: 15px; /* Bordes redondeados */
 }
 
-/* Estilos de botones */
+.methodology-content {
+    padding: 20px;
+}
+
+/* Sección de Ejemplos de Planificación de Proyectos */
+#project-planning {
+    padding: 50px 0;
+    background-color: #f5f5f5;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project-example-card {
+    flex: 1 1 45%; /* Más alargadas horizontalmente */
+    margin: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease; /* Animación de desplazamiento */
+}
+
+.project-example-card:hover {
+    transform: scale(1.05);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 15px; /* Bordes redondeados */
+    border-top-right-radius: 15px; /* Bordes redondeados */
+}
+
+.project-content {
+    padding: 20px;
+}
+
+/* Sección de Novedades */
+#updates {
+    padding: 50px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.update-item {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+/* Sección de Opciones de Inicio de Sesión */
+#login-options {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+.login-option .login-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animación de cambio de color */
+}
+
+.login-option .login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de Volver al Inicio */
+.back-to-top {
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+}
+
+/* Animaciones de botones */
 button {
     background-color: #007BFF;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 15px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Animación de cambio de color y desplazamiento */
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.1); /* Aumentar tamaño al hacer hover */
 }
 
-/* Estilos del formulario */
-form {
-    margin: 20px 0;
+
+/* Sección de Sugerencias */
+#suggestions {
+    padding: 50px;
+    background-color: #d3defc;  /*#f0f0f0*/
+    text-align: center;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+#suggestions h2 {
+    margin-bottom: 20px;
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-in;
+#suggestions p {
+    margin-bottom: 20px;
 }
 
-/* Responsivo */
+#suggestions-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+#suggestions-form label {
+    display: block;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+#suggestions-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid  #ccc;
+    box-sizing: border-box;
+}
+
+#suggestions-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s ease;
+}
+
+#suggestions-form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Botón de Volver al Principio */
+/* Botón de Volver al Principio */
+#back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex; /* Añadir display flex */
+    align-items: center; /* Centrando verticalmente */
+    justify-content: center; /* Centrando horizontalmente */
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    opacity: 0.6;
+}
+
+#back-to-top i {
+    display: flex; /* Asegurar que el icono use flexbox */
+    align-items: center; /* Centrando verticalmente */
+    justify-content: center; /* Centrando horizontalmente */
+}
+
+#back-to-top:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+#back-to-top:active {
+    transform: scale(0.95);
+}
+
+/* Mostrar/Ocultar el botón */
+#back-to-top {
+    display: none;
+}
+
+#back-to-top.show {
+    display: block;
+}
+
+
+
+
+
+
+/*Seccion del Footer */
+footer {
+    background-color: #333;
+    color: #ffffff;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.footer-nav a {
+    margin: 0 15px;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+}
+
+.footer-nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s;
+}
+
+.footer-nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-bottom-left {
+    text-align: left;
+}
+
+.footer-bottom-center {
+    text-align: center;
+    flex: 1;
+}
+
+.footer-bottom-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff; /* Cambiar el color del icono a blanco */
+    background-color: #333; /* Color de fondo del círculo */
+    border-radius: 50%; /* Crear un círculo */
+    width: 40px; /* Ancho del círculo */
+    height: 40px; /* Altura del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social a i {
+    font-size: 20px; /* Tamaño del icono */
+    color: #ffffff; /* Color del icono */
+}
+/* 
+.footer-social img {
+    height: 24px;
+} */
+
+
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
+    .features-container, .methodologies-container, .projects-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    button {
-        width: 100%;
+    .feature-card, .methodology-card, .project-example-card {
+        flex: 1 1 100%;
+        max-width: 80%;
     }
 }

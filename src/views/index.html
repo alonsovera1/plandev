@@ -3,27 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanDev - Gestión de Proyectos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../public/css/styles.css">
-    <title>PlanDev</title>
 </head>
 <body>
     <header>
-        <h1>PlanDev</h1>
-        <nav>
-            <ul>
-                <li><a href="#recursos">Recursos</a></li>
-                <li><a href="#metodologias">Metodologías</a></li>
-                <li><a href="#novedades">Novedades</a></li>
-                <li><a href="#cambiar-idioma">Cambiar Idioma</a></li>n
-                <li><a href="#login">Iniciar Sesión</a></li>
-                <li><a href="#signup">Registrarse</a></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <div class="header-logo">
+                <svg width="100" height="40">
+                    <!-- Coloca aquí el contenido de tu logo SVG -->
+                </svg>
+                <h1>ProyectMy</h1>
+            </div>
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">Recursos
+                        <ul class="dropdown">
+                            <li><a href="#">Guía de Trabajo</a></li>
+                            <li><a href="#">Documentación</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">Metodologías
+                        <ul class="dropdown">
+                            <li><a href="#">Metodología en Cascada</a></li>
+                            <li><a href="#">Ágil</a></li>
+                            <li><a href="#">Scrum</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#">Novedades</a></li>
+                    <li class="nav-item"><a href="#">Preguntas Frecuentes</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <i class="fas fa-globe"></i>
+                    <ul class="language-dropdown">
+                        <li><a href="#">Español</a></li>
+                        <li><a href="#">Inglés</a></li>
+                        <li><a href="#">Francés</a></li>
+                    </ul>
+                </div>
+                <button class="btn-login">Iniciar Sesión</button>
+                <button class="btn-signup">Registrarse</button>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
     </header>
+    
+    
+    
+    <main>
+        <section id="hero">
+            <div class="hero-image">
+                <img src="path/to/hero-image.jpg" alt="Organiza tu trabajo en equipo">
+            </div>
+            <div class="hero-content">
+                <h2>Organiza tu Trabajo en Equipo</h2>
+                <p>Con PlanDev, puedes gestionar tus proyectos de manera eficiente y colaborar con tu equipo en tiempo real.</p>
+                <button class="cta-button">Registrarse</button>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Características</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="path/to/feature-image1.jpg" alt="Tableros Kanban">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Tableros Kanban</h3>
+                        <p>Visualiza el flujo de trabajo con nuestros tableros Kanban personalizables.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="path/to/feature-image2.jpg" alt="Gráficos de Productividad">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Gráficos de Productividad</h3>
+                        <p>Analiza el rendimiento de tu equipo con gráficos y estadísticas detalladas.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="path/to/feature-image3.jpg" alt="Gestión de Tareas">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Gestión de Tareas</h3>
+                        <p>Asigna y gestiona tareas fácilmente, y sigue su progreso en tiempo real.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="path/to/feature-image4.jpg" alt="Colaboración en Tiempo Real">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Colaboración en Tiempo Real</h3>
+                        <p>Colabora con tu equipo en tiempo real y mantén todos los miembros informados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodologies">
+            <h2>Metodologías de Desarrollo de Software</h2>
+            <div class="methodologies-container">
+                <div class="methodology-card">
+                    <div class="methodology-image">
+                        <img src="path/to/methodology-image1.jpg" alt="Metodología en Cascada">
+                    </div>
+                    <div class="methodology-content">
+                        <h3>Metodología en Cascada</h3>
+                        <p>La metodología en cascada es un enfoque lineal para la gestión de proyectos de software.</p>
+                    </div>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-image">
+                        <img src="path/to/methodology-image2.jpg" alt="Agile">
+                    </div>
+                    <div class="methodology-content">
+                        <h3>Agile</h3>
+                        <p>Agile es una metodología flexible que se adapta a cambios rápidos en los requisitos del proyecto.</p>
+                    </div>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-image">
+                        <img src="path/to/methodology-image3.jpg" alt="Scrum">
+                    </div>
+                    <div class="methodology-content">
+                        <h3>Scrum</h3>
+                        <p>Scrum es un marco ágil para gestionar proyectos complejos y entregar productos de alto valor.</p>
+                    </div>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-image">
+                        <img src="path/to/methodology-image4.jpg" alt="DevOps">
+                    </div>
+                    <div class="methodology-content">
+                        <h3>DevOps</h3>
+                        <p>DevOps es una combinación de prácticas y herramientas que aumentan la capacidad de una organización para entregar aplicaciones y servicios de manera rápida.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-planning">
+            <h2>Ejemplos de Planificación de Proyectos</h2>
+            <div class="projects-container">
+                <div class="project-example-card">
+                    <div class="project-image">
+                        <img src="path/to/project-image1.jpg" alt="Proyecto de Desarrollo Web">
+                    </div>
+                    <div class="project-content">
+                        <h3>Proyecto de Desarrollo Web</h3>
+                        <p>Planifica y gestiona el desarrollo de un sitio web desde el diseño hasta el despliegue.</p>
+                    </div>
+                </div>
+                <div class="project-example-card">
+                    <div class="project-image">
+                        <img src="path/to/project-image2.jpg" alt="Proyecto de Aplicación Móvil">
+                    </div>
+                    <div class="project-content">
+                        <h3>Proyecto de Aplicación Móvil</h3>
+                        <p>Desarrolla una aplicación móvil con funcionalidades avanzadas y una experiencia de usuario excepcional.</p>
+                    </div>
+                </div>
+                <div class="project-example-card">
+                    <div class="project-image">
+                        <img src="path/to/project-image3.jpg" alt="Proyecto de Marketing Digital">
+                    </div>
+                    <div class="project-content">
+                        <h3>Proyecto de Marketing Digital</h3>
+                        <p>Planifica y ejecuta estrategias de marketing digital para alcanzar tus objetivos empresariales.</p>
+                    </div>
+                </div>
+                <div class="project-example-card">
+                    <div class="project-image">
+                        <img src="path/to/project-image4.jpg" alt="Proyecto de Innovación Tecnológica">
+                    </div>
+                    <div class="project-content">
+                        <h3>Proyecto de Innovación Tecnológica</h3>
+                        <p>Gestiona proyectos innovadores con tecnologías de vanguardia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="updates">
+            <h2>Novedades</h2>
+            <div class="update-item">
+                <h3>Actualización de Febrero 2025</h3>
+                <p>Incluye nuevas funcionalidades para la gestión de equipos y más opciones de personalización.</p>
+            </div>
+            <!-- Más actualizaciones -->
+        </section>
+
+        <section id="login-options">
+            <h2>Empieza Ahora</h2>
+            <div class="login-option">
+                <button class="login-button">Iniciar Sesión</button>
+            </div>
+        </section>
+
+        <section id="suggestions">
+            <h2>Sugerencias</h2>
+            <p>Tu opinión es importante. Por favor, proporciona tus sugerencias para mejorar la experiencia de usuario de la aplicación.</p>
+            <form id="suggestions-form">
+                <label for="suggestion-message">Mensaje:</label>
+                <textarea id="suggestion-message" name="suggestion-message" placeholder="Ingresa tu sugerencia" rows="5" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <button id="back-to-top" title="Volver al Principio"><i class="fas fa-chevron-up"></i></button>
+
+    </main>
+    
     <footer>
-        <p>&copy; 2025 PlanDev</p>
-        <p>Desarrollado por Alonso Vera</p>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="path/to/logo.png" alt="plandev Logo">
+                <p>plandev</p>
+            </div>
+            <div class="footer-nav">
+                <a href="https://www.plandev.com/about">Acerca de</a>
+                <a href="https://www.plandev.com/faq">Preguntas Frecuentes</a>
+                <a href="https://www.plandev.com/contact">Contacto</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2025 PlanDev</p>
+                </div>
+                <div class="footer-bottom-center">
+                    <p>Diseñado por <b>Alonso Vera</b></p>
+                </div>
+                <div class="footer-bottom-right footer-social">
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
-    <script src="/public/js/scripts.js"></script>
+    <script src="../../public/js/scripts.js"></script>
 </body>
 </html>
