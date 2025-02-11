@@ -28,7 +28,6 @@ const headerNav = document.querySelector('.header-nav');
 const headerActions = document.querySelector('.header-actions');
 
 hamburgerMenu.addEventListener('click', () => {
-    hamburgerMenu.classList.toggle('active');
     headerNav.classList.toggle('active');
     headerActions.classList.toggle('active');
 });

@@ -1,13 +1,14 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif; 
+    background-color: #f0f0f0;
     color: #333;
     margin: 0;
     scroll-behavior: smooth; /* Scroll suave al desplazarse */
 }
 
 /* Header */
+/* Estilos Generales del Header */
 header {
     background-color: #ffffff;
     padding: 10px 20px;
@@ -22,15 +23,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap; /* No permitir el cambio de línea */
 }
 
 .header-logo {
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Mantener el logo a la izquierda */
 }
 
 .header-logo h1 {
-    margin-left: 10px;
+    margin-left: 10px; /* Pequeño margen de separación */
     font-size: 24px;
     color: #000000;
 }
@@ -39,6 +42,7 @@ header {
     display: flex;
     flex: 1;
     justify-content: center;
+    order: 1;
 }
 
 .nav-list {
@@ -88,6 +92,7 @@ header {
 .header-actions {
     display: flex;
     align-items: center;
+    order: 2;
 }
 
 .language-selector {
@@ -126,7 +131,7 @@ header {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
-    background-color: #007BFF;
+    background-color: #33a1dd;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -136,50 +141,119 @@ header {
     background-color: #0056b3;
 }
 
+/* Efecto de linea */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s;
+}
+
+.nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 .hamburger-menu {
     display: none;
     font-size: 24px;
     cursor: pointer;
+    position: absolute; /* Posicionar de forma absoluta */
+    top: 10px; /* Alinear verticalmente */
+    right: 20px; /* Alinear horizontalmente a la derecha */
 }
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header-nav, .header-actions {
-        display: none;
-    }
-    
-    .hamburger-menu {
-        display: block;
+    .header-container {
+        flex-direction: column;
+        align-items: center; /* Alinear todos los elementos al centro */
     }
 
-    .header-nav.active, 
-    .header-actions.active {
-        display: flex;
+    .header-nav, .header-actions {
+        display: none;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+    }
+
+    .header-nav.active, .header-actions.active {
+        display: flex;
+        flex-direction: column; /* Organizar los elementos uno debajo del otro */
+        align-items: center;
+        width: 100%;
+    }
+
+    .header-logo {
+        width: 100%;
+        justify-content: center; /* Centrar el logo */
+        margin-bottom: 10px;
+        order: 1; /* Asegurar que el h1 aparezca primero */
+    }
+
+    .header-logo h1 {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-direction: column; /* Cambiar la dirección de los elementos a columna */
+        width: 100%;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        order: 2; /* Asegurar que aparezcan después del h1 */
     }
 
     .nav-item {
+        width: 100%;
+        text-align: center; /* Alinear el texto al centro */
         margin: 10px 0;
     }
 
-    .dropdown {
-        position: static;
-        box-shadow: none;
+    .language-selector {
+        order: 0;/* Asegurar que el icono de idiomas aparezca después de los nav-items */
+        margin-bottom: 10px;
+    }
+
+    .header-actions {
+        flex-direction: column; /* Organizar los elementos en columna */
+        align-items: center; /* Alinear los elementos al centro */
+        width: 100%;
+        order: 3; /* Asegurar que los botones de iniciar sesión y registrarse aparezcan al final */
+    }
+
+    .btn-login, .btn-signup {
+        width: 90%; /* Ajustar el ancho para que ocupe casi toda la pantalla */
+        margin: 10px 0; /* Espacio entre los botones */
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostrar el icono de hamburguesa en resoluciones bajas */
     }
 }
-
-
-
 
 
 /* Sección Hero */
 #hero {
-    display: flex;
-    align-items: center;
-    padding: 50px;
-    background-color: #007BFF;
-    color: white;
+    position: relative;
+    width: 99%; /* Reducir el ancho del hero */
+    height: 350px; /* Ajustar la altura según tu preferencia */
+    margin: 50px auto; /* Centrar horizontalmente y añadir margen superior e inferior */
+    background-color: #33a1dd; /* Color de fondo del hero */
+    border-radius: 7px; /* Redondear un poco las esquinas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar efecto de flotación */
+    overflow: hidden; /* Asegurar que el contenido no se salga del hero */
+    z-index: 1; /* Asegurar que el hero esté encima del fondo */
 }
 
 .hero-image img {
@@ -188,9 +262,15 @@ header {
     border-radius: 15px; /* Bordes redondeados */
 }
 
+/* Ajustar el contenido del hero */
 .hero-content {
-    max-width: 50%;
-    margin-left: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
 .hero-content .cta-button {
@@ -340,11 +420,12 @@ header {
 }
 
 .login-option .login-button {
-    background-color: #007BFF;
+    font-size: 20px;
+    background-color: #33a1dd;
     color: white;
     border: none;
     border-radius: 15px; /* Bordes redondeados */
-    padding: 10px 20px;
+    padding: 30px 50px;
     cursor: pointer;
     transition: background-color 0.3s ease; /* Animación de cambio de color */
 }
@@ -364,7 +445,7 @@ header {
 
 /* Animaciones de botones */
 button {
-    background-color: #007BFF;
+    background-color: #33a1dd;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -382,7 +463,7 @@ button:hover {
 /* Sección de Sugerencias */
 #suggestions {
     padding: 50px;
-    background-color: #d3defc;  /*#f0f0f0*/
+    background-color: #c0daea;  /*#f0f0f0*/
     text-align: center;
 }
 
@@ -419,7 +500,7 @@ button:hover {
 }
 
 #suggestions-form button {
-    background-color: #007BFF;
+    background-color: #33a1dd;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -442,7 +523,7 @@ button:hover {
     right: 30px;
     width: 40px;
     height: 40px;
-    background-color: #007BFF;
+    background-color: #33a1dd;
     color: white;
     border: none;
     border-radius: 50%;
@@ -489,7 +570,7 @@ button:hover {
 
 /*Seccion del Footer */
 footer {
-    background-color: #333;
+    background-color: #141415;
     color: #ffffff;
     padding: 20px 0;
     width: 100%;
@@ -504,11 +585,12 @@ footer {
 }
 
 .footer-logo {
+    font-size: 35px;
     display: flex;
     align-items: center;
     position: relative;
-    top: 20px;
-    left: 20px;
+    top: 2px;
+    left: 10px;
 }
 
 .footer-nav {
