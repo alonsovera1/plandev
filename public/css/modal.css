@@ -1,0 +1,119 @@
+/* Estilos para el modal */
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed; /* Posicionarlo de manera fija */
+    z-index: 1000; /* Asegurar que esté encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    opacity: 0; /* Hacer el modal invisible inicialmente */
+    transition: opacity 0.5s ease; /* Efecto de transición para la aparición del modal */
+}
+
+/* Contenedor del contenido del modal */
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco para el contenido del modal */
+    margin: 10% auto; /* Centrarse en el medio de la pantalla */
+    padding: 20px 30px; /* Padding adecuado para el contenido */
+    border: 1px solid #e1e4e8; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 100%;
+    max-width: 400px; /* Ancho máximo */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+    font-family: 'Roboto', sans-serif; /* Fuente moderna */
+    transform: translateY(-50px); /* Inicialmente mover hacia arriba */
+    transition: transform 0.5s ease; /* Efecto de transición para el movimiento del modal */
+}
+
+/* Botón de cierre del modal */
+.close {
+    color: #333333;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Contenedor del formulario de registro */
+.signup-container {
+    text-align: center;
+    padding: 0;
+}
+
+.signup-container h2 {
+    margin-bottom: 20px;
+    color: #333333; /* Color del texto del título */
+    font-size: 24px;
+}
+
+/* Estilo de los grupos de entrada */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #586069; /* Color del texto del label */
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px; /* Padding para un mejor aspecto */
+    border: 1px solid #e1e4e8; /* Borde gris claro */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 16px;
+    background-color: #fafbfc; /* Fondo claro */
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #0366d6; /* Color de borde al enfocar */
+    box-shadow: 0 0 4px rgba(3, 102, 214, 0.3); /* Efecto de sombra al enfocar */
+    outline: none;
+}
+
+/* Estilo del botón de registro */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-group button {
+    background-color: #007BFF; /* Color de fondo azul */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+    background-color: #0056b3; /* Color de fondo azul más oscuro al pasar el cursor */
+}
+
+/* Estilos de los enlaces */
+.signup-container .link {
+    display: block;
+    margin-top: 20px;
+    color: #0366d6; /* Color de los enlaces */
+    font-size: 14px;
+}
+
+.signup-container .link:hover {
+    text-decoration: underline;
+}
