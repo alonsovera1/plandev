@@ -15,7 +15,7 @@
         <div class="header-container">
             <div class="header-logo">
                 <!-- <svg width="100" height="40">
-                    contenido de tu logo SVG
+                    contenido de logo SVG
                 </svg> -->
                 <h1>PlanDev</h1>
             </div>
@@ -208,7 +208,6 @@
                 <h3>Actualización de Febrero 2025</h3>
                 <p>Incluye nuevas funcionalidades para la gestión de equipos y más opciones de personalización.</p>
             </div>
-            <!-- Más actualizaciones -->
         </section>
 
         <section id="login-options">
@@ -227,8 +226,6 @@
             </form>
         </section>
         <button id="back-to-top" title="Volver al Principio"><i class="fas fa-chevron-up"></i></button>
-
-
         <!-- Modal de registro -->
     <div id="signupModal" class="modal">
         <div class="modal-content">
@@ -256,7 +253,7 @@
                         <button type="submit">Registrarse</button>
                     </div>
                     <div class="link">
-                        ¿Ya tienes una cuenta? <a href="signin.html">Iniciar Sesión Aquí</a>
+                        ¿Ya tienes una cuenta? <a href="#" class="switch-to-login">Iniciar Sesión Aquí</a>
                     </div>
                     <!-- <div class="social-login">
                         <button type="button"><i class="fab fa-google"></i> Google</button>
@@ -276,27 +273,26 @@
                 <h2>Iniciar Sesión</h2>
                 <form>
                     <div class="input-group">
-                        <label for="login-email">Correo:</label>
-                        <input type="email" id="login-email" name="login-email" required>
+                        <label for="username">Usuario o correo electrónico:</label>
+                        <input type="text" id="username" name="username" required>
                     </div>
                     <div class="input-group">
-                        <label for="login-password">Contraseña:</label>
-                        <input type="password" id="login-password" name="login-password" required>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" required>
                     </div>
                     <div class="button-group">
                         <button type="submit">Iniciar Sesión</button>
                     </div>
                     <div class="link">
-                        ¿No tienes una cuenta? <a href="#" class="open-signup-modal">Regístrate Aquí</a>
+                        <a href="forgot-password.html">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div class="link">
-                        <a href="forgot-password.html">Olvidé la contraseña</a>
+                        ¿No tienes una cuenta? <a href="signup.html">Registrarse Aquí</a>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    
     <footer>
         <div class="footer-container">
             <div class="footer-logo">

@@ -8,7 +8,6 @@ body {
 }
 
 /* Header */
-/* Estilos Generales del Header */
 header {
     background-color: #ffffff;
     padding: 10px 20px;
@@ -23,17 +22,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* No permitir el cambio de línea */
+    flex-wrap: nowrap;
 }
 
 .header-logo {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Mantener el logo a la izquierda */
+    justify-content: flex-start;
 }
 
 .header-logo h1 {
-    margin-left: 10px; /* Pequeño margen de separación */
+    margin-left: 10px;
     font-size: 24px;
     color: #000000;
 }
@@ -128,7 +127,7 @@ header {
 
 .btn-login, .btn-signup {
     margin-left: 10px;
-    padding: 8px 12px;
+    padding: 11px 12px;
     border: none;
     border-radius: 5px;
     background-color: #33a1dd;
@@ -164,9 +163,9 @@ header {
     display: none;
     font-size: 24px;
     cursor: pointer;
-    position: absolute; /* Posicionar de forma absoluta */
-    top: 10px; /* Alinear verticalmente */
-    right: 20px; /* Alinear horizontalmente a la derecha */
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 
@@ -175,7 +174,7 @@ header {
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        align-items: center; /* Alinear todos los elementos al centro */
+        align-items: center;
     }
 
     .header-nav, .header-actions {
@@ -187,16 +186,16 @@ header {
 
     .header-nav.active, .header-actions.active {
         display: flex;
-        flex-direction: column; /* Organizar los elementos uno debajo del otro */
+        flex-direction: column;
         align-items: center;
         width: 100%;
     }
 
     .header-logo {
         width: 100%;
-        justify-content: center; /* Centrar el logo */
+        justify-content: center;
         margin-bottom: 10px;
-        order: 1; /* Asegurar que el h1 aparezca primero */
+        order: 1;
     }
 
     .header-logo h1 {
@@ -206,39 +205,39 @@ header {
     }
 
     .nav-list {
-        flex-direction: column; /* Cambiar la dirección de los elementos a columna */
+        flex-direction: column;
         width: 100%;
         align-items: center;
         padding: 0;
         margin: 0;
-        order: 2; /* Asegurar que aparezcan después del h1 */
+        order: 2;
     }
 
     .nav-item {
         width: 100%;
-        text-align: center; /* Alinear el texto al centro */
+        text-align: center;
         margin: 10px 0;
     }
 
     .language-selector {
-        order: 0;/* Asegurar que el icono de idiomas aparezca después de los nav-items */
+        order: 0;
         margin-bottom: 10px;
     }
 
     .header-actions {
-        flex-direction: column; /* Organizar los elementos en columna */
-        align-items: center; /* Alinear los elementos al centro */
+        flex-direction: column;
+        align-items: center;
         width: 100%;
-        order: 3; /* Asegurar que los botones de iniciar sesión y registrarse aparezcan al final */
+        order: 3;
     }
 
     .btn-login, .btn-signup {
-        width: 90%; /* Ajustar el ancho para que ocupe casi toda la pantalla */
-        margin: 10px 0; /* Espacio entre los botones */
+        width: 28%;
+        margin: 10px 0;
     }
 
     .hamburger-menu {
-        display: block; /* Mostrar el icono de hamburguesa en resoluciones bajas */
+        display: block;
     }
 }
 
@@ -246,20 +245,20 @@ header {
 /* Sección Hero */
 #hero {
     position: relative;
-    width: 99%; /* Reducir el ancho del hero */
-    height: 350px; /* Ajustar la altura según tu preferencia */
-    margin: 50px auto; /* Centrar horizontalmente y añadir margen superior e inferior */
-    background-color: #33a1dd; /* Color de fondo del hero */
-    border-radius: 7px; /* Redondear un poco las esquinas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar efecto de flotación */
-    overflow: hidden; /* Asegurar que el contenido no se salga del hero */
-    z-index: 1; /* Asegurar que el hero esté encima del fondo */
+    width: 99%;
+    height: 350px;
+    margin: 50px auto;
+    background-color: #33a1dd;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
 }
 
 .hero-image img {
     max-width: 50%;
     height: auto;
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
 }
 
 /* Ajustar el contenido del hero */
@@ -277,10 +276,10 @@ header {
     background-color: #0056b3;
     color: white;
     border: none;
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Animación de cambio de color */
+    transition: background-color 0.3s ease;
 }
 
 .hero-content .cta-button:hover {
@@ -300,13 +299,13 @@ header {
 }
 
 .feature-card {
-    flex: 1 1 22%; /* Ajustar el ancho */
+    flex: 1 1 22%;
     margin: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Bordes redondeados */
-    transition: transform 0.3s ease; /* Animación de desplazamiento */
-    height: 300px; /* Aumentar la altura */
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    height: 300px;
 }
 
 .feature-card:hover {
@@ -315,9 +314,9 @@ header {
 
 .feature-image img {
     width: 100%;
-    height: 150px;/* Ajustar la altura de la imagen */
-    border-top-left-radius: 15px; /* Bordes redondeados */
-    border-top-right-radius: 15px; /* Bordes redondeados */
+    height: 150px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .feature-content {
@@ -338,12 +337,12 @@ header {
 }
 
 .methodology-card {
-    flex: 1 1 30%; /* Ajustar el ancho */
+    flex: 1 1 30%;
     margin: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Bordes redondeados */
-    transition: transform 0.3s ease; /* Animación de desplazamiento */
+    border-radius: 15px; 
+    transition: transform 0.3s ease;
 }
 
 .methodology-card:hover {
@@ -353,8 +352,8 @@ header {
 .methodology-image img {
     width: 100%;
     height: auto;
-    border-top-left-radius: 15px; /* Bordes redondeados */
-    border-top-right-radius: 15px; /* Bordes redondeados */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .methodology-content {
@@ -374,12 +373,12 @@ header {
 }
 
 .project-example-card {
-    flex: 1 1 45%; /* Más alargadas horizontalmente */
+    flex: 1 1 45%;
     margin: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Bordes redondeados */
-    transition: transform 0.3s ease; /* Animación de desplazamiento */
+    border-radius: 15px;
+    transition: transform 0.3s ease;
 }
 
 .project-example-card:hover {
@@ -389,8 +388,8 @@ header {
 .project-image img {
     width: 100%;
     height: auto;
-    border-top-left-radius: 15px; /* Bordes redondeados */
-    border-top-right-radius: 15px; /* Bordes redondeados */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .project-content {
@@ -409,7 +408,7 @@ header {
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
 }
 
 /* Sección de Opciones de Inicio de Sesión */
@@ -424,10 +423,10 @@ header {
     background-color: #33a1dd;
     color: white;
     border: none;
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
     padding: 30px 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Animación de cambio de color */
+    transition: background-color 0.3s ease;
 }
 
 .login-option .login-button:hover {
@@ -450,13 +449,13 @@ button {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 15px; /* Bordes redondeados */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Animación de cambio de color y desplazamiento */
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
-    transform: scale(1.1); /* Aumentar tamaño al hacer hover */
+    transform: scale(1.1);
 }
 
 
@@ -481,7 +480,7 @@ button:hover {
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
 }
 
 #suggestions-form label {
@@ -494,7 +493,7 @@ button:hover {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     border: 1px solid  #ccc;
     box-sizing: border-box;
 }
@@ -505,7 +504,7 @@ button:hover {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     transition: background-color 0.3s ease;
 }
 
@@ -515,7 +514,6 @@ button:hover {
 
 
 
-/* Botón de Volver al Principio */
 /* Botón de Volver al Principio */
 #back-to-top {
     position: fixed;
@@ -527,9 +525,9 @@ button:hover {
     color: white;
     border: none;
     border-radius: 50%;
-    display: flex; /* Añadir display flex */
-    align-items: center; /* Centrando verticalmente */
-    justify-content: center; /* Centrando horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -539,9 +537,9 @@ button:hover {
 }
 
 #back-to-top i {
-    display: flex; /* Asegurar que el icono use flexbox */
-    align-items: center; /* Centrando verticalmente */
-    justify-content: center; /* Centrando horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
 }
 
 #back-to-top:hover {
@@ -562,10 +560,6 @@ button:hover {
 #back-to-top.show {
     display: block;
 }
-
-
-
-
 
 
 /*Seccion del Footer */
@@ -649,19 +643,19 @@ footer {
 .footer-social a {
     margin: 0 10px;
     text-decoration: none;
-    color: #ffffff; /* Cambiar el color del icono a blanco */
-    background-color: #333; /* Color de fondo del círculo */
-    border-radius: 50%; /* Crear un círculo */
-    width: 40px; /* Ancho del círculo */
-    height: 40px; /* Altura del círculo */
+    color: #ffffff;
+    background-color: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .footer-social a i {
-    font-size: 20px; /* Tamaño del icono */
-    color: #ffffff; /* Color del icono */
+    font-size: 20px;
+    color: #ffffff;
 }
 /* 
 .footer-social img {
