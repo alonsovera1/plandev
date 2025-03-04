@@ -1,0 +1,169 @@
+body {
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;
+}
+
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+header .logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+header p {
+    font-size: 17px;
+    color: #555;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las preguntas */
+.question {
+    margin-bottom: 30px; 
+}
+
+.question h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options-container.two-columns {
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre columnas y filas */
+}
+
+.options-container.two-columns .option {
+    width: calc(50% - 10px); /* Ancho para dividir en 2 columnas */
+}
+
+/* Estilo para las opciones */
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option input[type="checkbox"],
+.option input[type="radio"] {
+    margin: 0;
+}
+
+.option label {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Campo de texto para "Otro" */
+.option input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: none;
+}
+
+.option input[type="checkbox"]:checked ~ input[type="text"],
+.option input[type="radio"]:checked ~ input[type="text"] {
+    display: block;
+}
+
+/* Botón de siguiente */
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4A90E2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #0056B3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Ocultar el diseño predeterminado y dar forma circular */
+input[type="checkbox"],
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    /* Configurar tamaño y estilo circular */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+/* Estilo al estar marcado */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: #4A90E2; 
+    border-color: #0056b3;
+}
+
+/* Mostrar el símbolo de check al marcar */
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after {
+    content: '✔';
+    color: #ffffff;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

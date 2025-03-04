@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Intereses Informáticos - Proyecto My</title>
+    <link rel="stylesheet" href="../../public/css/global.css">
+    <link rel="stylesheet" href="../../public/css/survey.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo de la App" class="logo">
+        <h1>Encuesta de Intereses en Informática</h1>
+        <p>Realizaremos una breve encuesta para conocer tus intereses y conocimientos en diversas áreas de la informática.</p>
+        <p>Las respuestas serán tratadas de manera confidencial.</p>
+        <p>Es importante que seas totalmente sincero en tus respuestas.</p>
+    </header>
+    <main>
+        <form id="surveyForm">
+            <!-- Pregunta 1 -->
+            <div class="question">
+                <h2>¿Cuál o cuáles son las áreas de la informática de tu interés?</h2>
+                <div class="options-container two-columns">
+                    <div class="option">
+                        <input type="checkbox" id="option1" name="interests" value="gestor_de_proyectos">
+                        <label for="option1">Gestor de Proyectos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option2" name="interests" value="analista_de_negocios">
+                        <label for="option2">Analista de Negocios</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option3" name="interests" value="scrum_master">
+                        <label for="option3">Scrum Master</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option4" name="interests" value="arquitecto_de_software">
+                        <label for="option4">Arquitecto de Software</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option5" name="interests" value="analista_de_software">
+                        <label for="option5">Analista de Software</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option6" name="interests" value="diseñador_grafico">
+                        <label for="option6">Diseñador Grafico (UX/UI)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option7" name="interests" value="especialista_en_marketing_digital">
+                        <label for="option7">Especialista en Marketing Digital</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option8" name="interests" value="copywriter">
+                        <label for="option8">Copywriter</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option9" name="interests" value="devops">
+                        <label for="option9">DevOps</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="checkbox" id="option10" name="interests" value="aseguramiente_de_calidad">
+                        <label for="option10">Aseguramiente de calidad (QA)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option11" name="interests" value="ciberseguridad">
+                        <label for="option11">Ciberseguridad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option12" name="interests" value="administrador_base_de_datos">
+                        <label for="option12">Administrador de Base de Datos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option13" name="interests" value="administrador_de_redes">
+                        <label for="option13">Administrador de Redes</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option14" name="interests" value="tester">
+                        <label for="option14">Tester</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option15" name="interests" value="consultor_de_marketing">
+                        <label for="option15">Consultor de Marketing</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option16" name="interests" value="analista_comercial">
+                        <label for="option16">Analista comercial</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option17" name="interests" value="programador">
+                        <label for="option17">Programador</label>
+                    </div>                   
+                    <div class="option">
+                        <input type="checkbox" id="option25" name="interests" value="otro">
+                        <label for="option25">Otro</label>
+                        <input type="text" id="otherInterest" name="otherInterest" placeholder="Especifica cuál otra...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question">
+                <h2>¿Qué áreas de la programación son de tu interés?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="checkbox" id="option26" name="programming" value="desarrollo_web">
+                        <label for="option26">Desarrollo Web</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option27" name="programming" value="frontend">
+                        <label for="option27">Frontend</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option28" name="programming" value="backend">
+                        <label for="option28">Backend</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option29" name="programming" value="Diseño de Interfaces (UX/UI)">
+                        <label for="option29">diseño_de_interfaces</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option30" name="programming" value="desarrollo_de_aplicaciones_moviles">
+                        <label for="option30">Desarrollo de Aplicaciones Móviles</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option31" name="programming" value="desarrollo_aplicaciones_escritorio">
+                        <label for="option31">Desarrollo de Aplicaciones de Escritorio</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option32" name="programming" value="ciberseguridad">
+                        <label for="option32">Ciberseguridad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option33" name="programming" value="bases_de_Datos">
+                        <label for="option33">Bases de Datos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option34" name="programming" value="inteligencia_atificial">
+                        <label for="option34">Inteligencia Atificial</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option35" name="programming" value="ciencia_de_datos">
+                        <label for="option35">Ciencia de Datos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option36" name="programming" value="testing">
+                        <label for="option36">Testing</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option37" name="programming" value="devops">
+                        <label for="option37">Devops</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option38" name="programming" value="desarrollo_de_viedeojuegos">
+                        <label for="option38">Desarrollo de Viedeojuegos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option39" name="programming" value="desarrollo_sistemas_operativos">
+                        <label for="option39">Desarrollo de Sistemas Operativos</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option40" name="programming" value="realidad_virtual">
+                        <label for="option40">Realidad Virtual</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option41" name="programming" value="realidad_aumentada">
+                        <label for="option41">Realidad Aumentada</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option42" name="programming" value="realidad_aumentada">
+                        <label for="option42">Realidad Aumentada</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option43" name="programming" value="Ninguno">
+                        <label for="option43">Ninguno</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option50" name="programming" value="otro">
+                        <label for="option50">Otro</label>
+                        <input type="text" id="otherProgramming" name="otherProgramming" placeholder="Especifica cuál otra...">
+                    </div>
+                </div>
+            </div>
+            <!-- Pregunta 3 -->
+            <div class="question">
+                <h2>¿Cuál es el nivel de conocimiento del área de informática de tu preferencia?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="option60" name="knowledge" value="basico">
+                        <label for="option60">Básico</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option61" name="knowledge" value="intermedio">
+                        <label for="option61">Intermedio</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option62" name="knowledge" value="avanzado">
+                        <label for="option62">Avanzado</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Pregunta 4 -->
+            <div class="question">
+                <h2>Indica ¿que herramientas y lenguajes de programación conoces?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="checkbox" id="option70" name="tools" value="git">
+                        <label for="option70">Git</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option71" name="tools" value="GitHub">
+                        <label for="option71">GitHub</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option72" name="tools" value="gitlab">
+                        <label for="option72">GitLab</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option73" name="tools" value="bitbucket">
+                        <label for="option73">BitBucket</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option74" name="tools" value="slack">
+                        <label for="option74">Slack</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option75" name="tools" value="linux">
+                        <label for="option75">Linux</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option76" name="tools" value="bash">
+                        <label for="option76">Bash</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option77" name="tools" value="wordpress">
+                        <label for="option77">WordPress</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option78" name="tools" value="wix">
+                        <label for="option78">Wix</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option79" name="tools" value="python">
+                        <label for="option79">Python</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option80" name="tools" value="django">
+                        <label for="option80">Django</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option81" name="tools" value="javascript">
+                        <label for="option81">JavaScript</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option82" name="tools" value="react">
+                        <label for="option82">React</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option83" name="tools" value="Vue">
+                        <label for="option83">Vue</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option84" name="tools" value="c++">
+                        <label for="option84">C++</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option85" name="tools" value="c#">
+                        <label for="option85">C#</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option86" name="tools" value="Java">
+                        <label for="option86">Java</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option87" name="tools" value="swift">
+                        <label for="option87">Swift</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option88" name="tools" value="kotlin">
+                        <label for="option88">Kotlin</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option89" name="tools" value="objetive-c">
+                        <label for="option89">Objetive-C</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option90" name="tools" value="php">
+                        <label for="option90">PHP</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option91" name="tools91" value="laravel">
+                        <label for="option91">Laravel</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option92" name="tools" value="go">
+                        <label for="option92">Go</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option93" name="tools" value="ruby">
+                        <label for="option93">Ruby</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option94" name="tools" value="r">
+                        <label for="option94">R</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option95" name="tools" value="dart">
+                        <label for="option95">Dart</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option96" name="tools" value="rust">
+                        <label for="option96">Rust</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option97" name="tools" value="sql">
+                        <label for="option97">SQL</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option98" name="tools" value="nosql">
+                        <label for="option98">NoSQL</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option99" name="tools" value="firebase">
+                        <label for="option99">FireBase</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option100" name="tools" value="aws">
+                        <label for="option100">AWS</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option101" name="tools" value="azure">
+                        <label for="option101">Azure</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option102" name="tools" value="digital_ocean">
+                        <label for="option102">Digital Ocean</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option103" name="tools" value="redes_informáticas">
+                        <label for="option103">Redes informáticas</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option104" name="tools" value="ingles">
+                        <label for="option104">Inglés</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option105" name="tools" value="otro">
+                        <label for="option105">Otro</label>
+                        <input type="text" id="otherTool" name="otherTool" placeholder="Especifica cuál otra...">
+                    </div>
+                </div>
+            </div>
+            <!-- Pregunta 5 -->
+            <div class="question">
+                <h2>¿Cuánto tiempo llevas estudiando estas tecnologías?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="option120" name="time" value="hace_1_mes">
+                        <label for="option120">Hace 1 mes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option121" name="time" value="hace_6_meses">
+                        <label for="option121">Hace 6 meses</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option122" name="time" value="hace_1_año">
+                        <label for="option122">Hace 1 año</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option123" name="time" value="mas_de_1_año">
+                        <label for="option123">Mas de 1 año</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Pregunta 6 -->
+            <div class="question">
+                <h2>¿Utilizas actualmente alguna herramienta o aplicación para la planificación o gestion de proyectos de software?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="checkbox" id="option130" name="planification" value="asana">
+                        <label for="option130">Asana</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option131" name="planification" value="microsoft_project">
+                        <label for="option131">Microsoft Project</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option132" name="planification" value="microsoft_planner">
+                        <label for="option132">Microsoft Planner</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option133" name="planification" value="trello">
+                        <label for="option133">Trello</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option134" name="planification" value="jira">
+                        <label for="option134">Jira</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option135" name="planification" value="slack">
+                        <label for="option135">Slack</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option136" name="planification" value="figma">
+                        <label for="option136">Figma</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option137" name="planification" value="none">
+                        <label for="option137">No utilizo ninguna</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option139" name="planification" value="otro">
+                        <label for="option139">Otro</label>
+                        <input type="text" id="otherPlanification" name="otherPlanification" placeholder="Especifica cuál otra...">
+                    </div>
+                </div>
+            </div>
+            <!-- Pregunta 7 -->
+            <div class="question">
+                <h2>¿Qué habilidades blandas dominas?</h2>
+                <div class="options-container">
+                    <div class="option">
+                        <input type="checkbox" id="option150" name="skills" value="comunicacion_efectiva">
+                        <label for="option150">Comunicación efectiva</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option151" name="skills" value="trabajo_en_equipo">
+                        <label for="option151">Trabajo en equipo</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option152" name="skills" value="resolucion_de_problemas">
+                        <label for="option152">Resolución de problemas</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option153" name="skills" value="adaptabilidad_flexibilidad">
+                        <label for="option153">Adaptabilidad y flexibilidad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option154" name="skills" value="pensamiento_critico">
+                        <label for="option154">Pensamiento crítico</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option155" name="skills" value="gestion_tiempo">
+                        <label for="option155">Gestión del tiempo</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option156" name="skills" value="creatividad">
+                        <label for="option156">Creatividad</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option157" name="skills" value="liderazgo">
+                        <label for="option157">Liderazgo</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option158" name="skills" value="aprendizaje_continuo">
+                        <label for="option158">Aprendizaje continuo</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="option159" name="planification" value="otro">
+                        <label for="option159">Otro</label>
+                        <input type="text" id="otherSkill" name="otherSkill" placeholder="Especifica cuál otra...">
+                    </div>
+                </div>
+            </div>
+          <!-- Pregunta 8 -->
+          <div class="question">
+            <h2>¿Cuales son tus proyecciones futuras en el campo de la informática?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option170" name="projections" value="trabajar_para_empresas">
+                    <label for="option170">Trabajar para empresas</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option171" name="projections" value="trabajo_independiente">
+                    <label for="option171">Trabajar de manera independiente para clientes (freelance)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option172" name="projections" value="crear_proyectos_personales">
+                    <label for="option172">Crear proyectos personales</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option173" name="projections" value="otro_trabajo">
+                    <label for="option173">Otro tipo de trabajo que no esta relacionado con la informatica</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option174" name="projections" value="otro">
+                    <label for="option174">Otro</label>
+                    <input type="text" id="otherProjection" name="otherProjection" placeholder="Especifica cuál otra...">
+                </div>
+            </div>
+        </div> 
+          <!-- Pregunta 9 -->
+          <div class="question">
+            <h2>¿Tienes experiencia en la creacion de algún proyecto de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option180" name="experience" value="no_tengo_experiencia">
+                    <label for="option180">No tengo experiencia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option181" name="experience" value="poca_experiencia">
+                    <label for="option181">Poca experiencia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option182" name="experience" value="media_experiencia">
+                    <label for="option182">Media experiencia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option183" name="experience" value="mucha_experiencia">
+                    <label for="option183">Mucha experiencia</label>
+                </div>
+            </div>
+        </div> 
+        <!-- Pregunta 10 -->
+        <div class="question">
+            <h2>¿Que metodologias de desarrollo conoces?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="checkbox" id="option200" name="metodologies" value="scrum">
+                    <label for="option200">Scrum</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option201" name="metodologies" value="kanban">
+                    <label for="option201">Kanban</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option202" name="metodologies" value="agile">
+                    <label for="option202">Agile</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option203" name="metodologies" value="xp">
+                    <label for="option203">XP (Programación Extrema)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option204" name="metodologies" value="devops">
+                    <label for="option204">DevOps</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option205" name="metodologies" value="modelo_cascada">
+                    <label for="option205">Modelo en Cascada</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option206" name="metodologies" value="modelo_v">
+                    <label for="option206">Modelo en V</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option207" name="metodologies" value="modelo_incremental">
+                    <label for="option207">Modelo Incremental</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option208" name="metodologies" value="modelo_espiral">
+                    <label for="option208">Modelo en Espiral</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option209" name="metodologies" value="modelo_prototipo">
+                    <label for="option209">Modelo de Prototipo</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option210" name="metodologies" value="rad">
+                    <label for="option210">RAD (Desarrollo Rápido de Aplicaciones)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option211" name="metodologies" value="rup">
+                    <label for="option211">RUP (Proceso Unificado Racional)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option212" name="metodologies" value="lean">
+                    <label for="option212">Lean</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option213" name="metodologies" value="fdd">
+                    <label for="option213">FDD (Desarrollo Dirigido por Características)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option214" name="metodologies" value="tdd">
+                    <label for="option214">TDD (Desarrollo Basado en Pruebas)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option215" name="metodologies" value="bdd">
+                    <label for="option215">BDD (Desarrollo Basado en Comportamiento)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option216" name="metodologies" value="atdd">
+                    <label for="option216">ATDD (Desarrollo Basado en Aceptación)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option217" name="metodologies" value="dsdm">
+                    <label for="option217">DSDM (Método de Sistemas Dinámicos)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option218" name="metodologies" value="safe">
+                    <label for="option218">SAFe (Marco Ágil Escalado)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option219" name="metodologies" value="scrumban">
+                    <label for="option219">ScrumBan</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option220" name="metodologies" value="none">
+                    <label for="option220">No conozco ninguna</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="option221" name="metodologies" value="otro">
+                    <label for="option221">Otro</label>
+                    <input type="text" id="otherMetodologies" name="otherMetodologies" placeholder="Especifica cuál otra...">
+                </div>
+            </div>
+        </div>
+        <!-- Pregunta 11 -->
+        <div class="question">
+            <h2>¿Has creado algun proyecto tomando como base las metodologias de desarrollo de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option230" name="createProjects" value="si">
+                    <label for="option230">Si</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option231" name="createProjects" value="no">
+                    <label for="option231">No</label>
+                </div>
+            </div>
+        </div>      
+        <!-- Pregunta 12 -->
+        <div class="question">
+            <h2>¿Conoces alguna herramienta que ayude a planificar proyectos haciendo uso de las metodologias de desarrollo de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option233" name="toolPlan" value="si">
+                    <label for="option233">Si</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option234" name="toolPlan" value="no">
+                    <label for="option234">No</label>
+                </div>
+            </div>
+        </div>      
+        <!-- Pregunta 13 -->
+        <div class="question">
+            <h2>¿Crees que es dificil para una sola persona planificar proyectos de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option236" name="questionDificult" value="si">
+                    <label for="option236">Si</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option237" name="questionDificult" value="no">
+                    <label for="option237">No</label>
+                </div>
+            </div>
+        </div>      
+        <!-- Pregunta 14 -->
+        <div class="question">
+            <h2>¿Crees que colaborar con los compañeros de estudio facilitará la planificacion de tus proyectos de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option240" name="questionFacilitate" value="si">
+                    <label for="option240">Si</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option241" name="questionFacilitate" value="no">
+                    <label for="option241">No</label>
+                </div>
+            </div>
+        </div>      
+        <!-- Pregunta 15 -->
+        <div class="question">
+            <h2>¿Crees que seria de utilidad una aplicacion web que te permita planificar proyectos de software con tus compañeros aplicando las metodologias de desarrollo de software?</h2>
+            <div class="options-container">
+                <div class="option">
+                    <input type="radio" id="option244" name="questionUtility" value="si">
+                    <label for="option244">Si</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="option245" name="questionUtility" value="no">
+                    <label for="option245">No</label>
+                </div>
+            </div>
+        </div>      
+
+            <!-- Botón de Siguiente -->
+            <button type="button" id="nextBtn">Siguiente</button>
+        </form>
+    </main>
+
+    <script src="../../public/js/survey.js"></script> <!-- Enlace al JavaScript de la encuesta -->
+</body>
+</html>

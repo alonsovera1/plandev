@@ -4,7 +4,11 @@ body {
     background-color: #f0f0f0;
     color: #333;
     margin: 0;
-    scroll-behavior: smooth; /* Scroll suave al desplazarse */
+    scroll-behavior: smooth;
+}
+
+h2 {
+    text-align: center;
 }
 
 /* Header */
@@ -130,10 +134,12 @@ header {
     padding: 11px 12px;
     border: none;
     border-radius: 5px;
-    background-color: #33a1dd;
-    color: white;
+    background-color: #4A90E2;
+    color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 700;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .btn-login:hover, .btn-signup:hover {
@@ -234,7 +240,9 @@ header {
     .btn-login, .btn-signup {
         width: 28%;
         margin: 10px 0;
+        padding: 10px
     }
+
 
     .hamburger-menu {
         display: block;
@@ -248,11 +256,15 @@ header {
     width: 99%;
     height: 350px;
     margin: 50px auto;
-    background-color: #33a1dd;
+    background:  linear-gradient(to bottom,#3176BC, #79C4FF);
     border-radius: 7px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 1;
+}
+
+.title-hero {
+    font-size: 35px;
 }
 
 .hero-image img {
@@ -268,22 +280,29 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
+    color: #ffffff;
     padding: 20px;
 }
 
+.hero-content p {
+    font-weight: 500;
+}
+
 .hero-content .cta-button {
-    background-color: #0056b3;
-    color: white;
+    background-color: #0056B3;
+    color: #ffffff;
     border: none;
     border-radius: 15px;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 50px;
+    font-weight: 700;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content .cta-button:hover {
-    background-color: #003d82;
+    background-color: #003D82;
 }
 
 /* Sección de Características */
@@ -301,7 +320,7 @@ header {
 .feature-card {
     flex: 1 1 22%;
     margin: 20px;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     transition: transform 0.3s ease;
@@ -339,7 +358,7 @@ header {
 .methodology-card {
     flex: 1 1 30%;
     margin: 20px;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px; 
     transition: transform 0.3s ease;
@@ -375,7 +394,7 @@ header {
 .project-example-card {
     flex: 1 1 45%;
     margin: 20px;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     transition: transform 0.3s ease;
@@ -405,7 +424,7 @@ header {
 
 .update-item {
     margin-bottom: 20px;
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -420,13 +439,15 @@ header {
 
 .login-option .login-button {
     font-size: 20px;
-    background-color: #33a1dd;
-    color: white;
+    background-color: #4A90E2;
+    color: #ffffff;
     border: none;
     border-radius: 15px;
-    padding: 30px 50px;
+    padding: 20px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 700;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .login-option .login-button:hover {
@@ -435,7 +456,7 @@ header {
 
 /* Botón de Volver al Inicio */
 .back-to-top {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     position: absolute;
     top: -20px;
@@ -444,8 +465,8 @@ header {
 
 /* Animaciones de botones */
 button {
-    background-color: #33a1dd;
-    color: white;
+    background-color: #4A90E2;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -462,7 +483,7 @@ button:hover {
 /* Sección de Sugerencias */
 #suggestions {
     padding: 50px;
-    background-color: #c0daea;  /*#f0f0f0*/
+    background-color: #ECF0F1;  /* #c0daea;  / #f0f0f0*/
     text-align: center;
 }
 
@@ -477,7 +498,7 @@ button:hover {
 #suggestions-form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -499,8 +520,8 @@ button:hover {
 }
 
 #suggestions-form button {
-    background-color: #33a1dd;
-    color: white;
+    background-color: #4A90E2;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -521,8 +542,8 @@ button:hover {
     right: 30px;
     width: 40px;
     height: 40px;
-    background-color: #33a1dd;
-    color: white;
+    background-color: #4A90E2;
+    color: #ffffff;
     border: none;
     border-radius: 50%;
     display: flex;
