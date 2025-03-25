@@ -175,81 +175,6 @@ header {
 }
 
 
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header-nav, .header-actions {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .header-nav.active, .header-actions.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .header-logo {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-        order: 1;
-    }
-
-    .header-logo h1 {
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        order: 2;
-    }
-
-    .nav-item {
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .language-selector {
-        order: 0;
-        margin-bottom: 10px;
-    }
-
-    .header-actions {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        order: 3;
-    }
-
-    .btn-login, .btn-signup {
-        width: 28%;
-        margin: 10px 0;
-        padding: 10px
-    }
-
-
-    .hamburger-menu {
-        display: block;
-    }
-}
-
-
 /* Sección Hero */
 #hero {
     position: relative;
@@ -343,41 +268,6 @@ header {
     text-align: center;
 }
 
-/* Sección de Metodologías */
-#methodologies {
-    padding: 50px 0;
-    background-color: #f5f5f5;
-}
-
-.methodologies-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.methodology-card {
-    flex: 1 1 30%;
-    margin: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; 
-    transition: transform 0.3s ease;
-}
-
-.methodology-card:hover {
-    transform: scale(1.05);
-}
-
-.methodology-image img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.methodology-content {
-    padding: 20px;
-}
 
 /* Sección de Ejemplos de Planificación de Proyectos */
 #project-planning {
@@ -415,42 +305,68 @@ header {
     padding: 20px;
 }
 
-/* Sección de Novedades */
-#updates {
+/* Sección de Introduccion */
+#intro {
     padding: 50px;
     background-color: #f5f5f5;
     text-align: center;
 }
 
-.update-item {
-    margin-bottom: 20px;
+
+.intro-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #ffffff;
-    padding: 20px;
+    gap: 20px;
+    padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    /* margin:0 0 20px 0; */
+    position: relative;
+    /* width: 90%; */
 }
+
+.intro-image {
+    /* flex: 1; */
+    max-width: 400px;
+    border-radius: 15px;;
+    height: auto;
+    /* margin-right: 20px; */
+
+}
+
+.intro-title {
+    position: relative;
+    margin: 0 0 20px 0;
+    /* top: 10px */
+    
+}
+
+.intro-text {
+    text-align: justify;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+
 
 /* Sección de Opciones de Inicio de Sesión */
-#login-options {
-    display: flex;
-    justify-content: space-around;
-    padding: 50px 0;
-}
 
-.login-option .login-button {
+.login-button {
     font-size: 20px;
     background-color: #4A90E2;
     color: #ffffff;
     border: none;
     border-radius: 15px;
-    padding: 20px 20px;
+    padding: 15px 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 700;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.login-option .login-button:hover {
+.login-button:hover {
     background-color: #0056b3;
 }
 
@@ -480,59 +396,20 @@ button:hover {
 }
 
 
-/* Sección de Sugerencias */
-#suggestions {
+/* Sección de llamada a la accion 2 */
+#cta-button-2 {
     padding: 50px;
-    background-color: #ECF0F1;  /* #c0daea;  / #f0f0f0*/
+    background-color: #ECF0F1;
     text-align: center;
 }
 
-#suggestions h2 {
+#cta-button-2 h2 {
     margin-bottom: 20px;
 }
 
-#suggestions p {
-    margin-bottom: 20px;
+#cta-button-2 p {
+    margin-bottom: 40px;
 }
-
-#suggestions-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-}
-
-#suggestions-form label {
-    display: block;
-    margin-bottom: 8px;
-    text-align: left;
-}
-
-#suggestions-form textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid  #ccc;
-    box-sizing: border-box;
-}
-
-#suggestions-form button {
-    background-color: #4A90E2;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-#suggestions-form button:hover {
-    background-color: #0056b3;
-}
-
 
 
 /* Botón de Volver al Principio */
@@ -685,14 +562,122 @@ footer {
 
 
 
+
+
+
+
+
 /* Responsive Design */
+
+
+
+/* Header */
 @media (max-width: 768px) {
-    .features-container, .methodologies-container, .projects-container {
+    .header-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .feature-card, .methodology-card, .project-example-card {
+    .header-nav, .header-actions {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header-nav.active, .header-actions.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header-logo {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+        order: 1;
+    }
+
+    .header-logo h1 {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        order: 2;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .language-selector {
+        order: 0;
+        margin-bottom: 10px;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        order: 3;
+    }
+
+    .btn-login, .btn-signup {
+        width: 28%;
+        margin: 10px 0;
+        padding: 10px
+    }
+
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-item {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .intro-image {
+        order: 2;
+        max-width: 100%;
+        margin: 0 0 15px 0;
+    }
+
+    .intro-content {
+        order: 1;
+        padding: 0px;
+        text-align: center;
+    }
+
+    .intro-text {
+        line-height: 1.5;
+        /* margin: 10px 0; */
+    }
+}
+
+/* Contenido */
+@media (max-width: 768px) {
+    .features-container, .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card, .project-example-card {
         flex: 1 1 100%;
         max-width: 80%;
     }
