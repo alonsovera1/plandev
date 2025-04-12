@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #33a1dd;
+    color: #4A90E2;
     text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 button {
     font-family: inherit;
     color: white;
-    background-color: #33a1dd;
+    background-color: #4A90E2;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;

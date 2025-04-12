@@ -139,7 +139,7 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 700;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);*/
 }
 
 .btn-login:hover, .btn-signup:hover {
@@ -214,16 +214,16 @@ header {
 }
 
 .hero-content .cta-button {
-    background-color: #0056B3;
+    background-color: #2765c9; /*#2765c9 #0056B3*/
     color: #ffffff;
     border: none;
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: 10px;
+    padding: 12px 22px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 50px;
     font-weight: 700;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);*/
 }
 
 .hero-content .cta-button:hover {
@@ -238,13 +238,13 @@ header {
 
 .features-container {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
 }
 
 .feature-card {
     flex: 1 1 22%;
-    margin: 20px;
+    margin: 15px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -258,9 +258,10 @@ header {
 
 .feature-image img {
     width: 100%;
-    height: 150px;
+    height: 80px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    margin-top: 10px;
 }
 
 .feature-content {
@@ -296,13 +297,15 @@ header {
 
 .project-image img {
     width: 100%;
-    height: auto;
+    height: 80px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    margin-top: 10px;
 }
 
 .project-content {
     padding: 20px;
+    text-align: center;
 }
 
 /* Sección de Introduccion */
@@ -354,20 +357,20 @@ header {
 /* Sección de Opciones de Inicio de Sesión */
 
 .login-button {
-    font-size: 20px;
+    font-size: 15px;
     background-color: #4A90E2;
     color: #ffffff;
     border: none;
-    border-radius: 15px;
-    padding: 15px 15px;
+    border-radius: 10px;
+    padding: 12px 22px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 700;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);*/
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color: #0056B3;
 }
 
 /* Botón de Volver al Inicio */
@@ -671,7 +674,7 @@ footer {
 }
 
 /* Contenido */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /*768px*/
     .features-container, .projects-container {
         flex-direction: column;
         align-items: center;

@@ -92,7 +92,7 @@
 }
 
 .button-group button {
-    background-color: #33a1dd;
+    background-color: #4A90E2;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -103,20 +103,38 @@
 }
 
 .button-group button:hover {
-    background-color: #0056b3; 
+    background-color: #0056B3; 
 }
 
 /* Estilos de los enlaces */
 .signup-container .link {
     display: block;
     margin-top: 20px;
-    color: #0366d6;
+    color: #0056B3;
     font-size: 14px;
 }
 
-.signup-container .link:hover {
-    text-decoration: underline;
+.signup-container .link a:hover {
+    text-decoration: none;
+    position: relative;
+    color: #0056B3;
 }
 
 
+.signup-container .link a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0056b3;
+    transform-origin: bottom right;
+    transition: transform 0.25s;
+}
 
+.signup-container .link a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
