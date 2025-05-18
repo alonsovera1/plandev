@@ -1,4 +1,11 @@
 node_modules/
 package.json
 package-lock.json
+
 .env
+firebase-debug.log
+build/
+dist/
+.DS_Store
+Thumbs.db
+local.settings.json
