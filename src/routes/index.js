@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 const authRoutes = require('./auth');
 router.use('/auth', authRoutes);
 
-// Aquí puedes integrar otras rutas, por ejemplo, para proyectos, chat, etc.
+// Aquí se puede integrar otras rutas, por ejemplo, para proyectos, chat, etc.
 // const projectsRoutes = require('./projects');
 // router.use('/projects', projectsRoutes);
 

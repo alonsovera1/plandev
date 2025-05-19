@@ -33,8 +33,7 @@ const signup = async (req, res) => {
 };
 
 // Función para iniciar sesión o validar el usuario
-// Aunque Firebase Auth maneja gran parte de la autenticación en el frontend,
-// es posible incluir alguna lógica personalizada aquí si es necesario.
+// Firebase Auth maneja gran parte de la autenticación en el frontend pero es posible incluir alguna lógica personalizada aquí si es necesario.
 const signin = async (req, res) => {
   // Nota: En general, la autenticación con Firebase se puede gestionar en el cliente.
   // Esta función se puede usar para operaciones adicionales del backend.
