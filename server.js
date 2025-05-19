@@ -1,4 +1,3 @@
-// server.js
 require('dotenv').config(); // Carga las variables de entorno
 const express = require('express');
 const cors = require('cors');
@@ -35,9 +34,10 @@ server.listen(port, () => {
 });
 
 
-// 
+// para confirmar que dotenv ha leído correctamente tu archivo .env y que la variable está disponible.
+// En un entorno de producción es recomendable eliminar estas llamadas a console.log
+// console.log('FIREBASE_SERVICE_ACCOUNT_KEY:', process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
-console.log('FIREBASE_SERVICE_ACCOUNT_KEY:', process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
 const admin = require('./src/config/firebase');
 
