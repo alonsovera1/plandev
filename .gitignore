@@ -1,8 +1,11 @@
 node_modules/
 package.json
 package-lock.json
-
 .env
+src/config/plandev-c106c-firebase-adminsdk-fbsvc-4ec3a61df7.json
+
+serviceAccountKey.json
+serviceAccountKey.json
 firebase-debug.log
 build/
 dist/
