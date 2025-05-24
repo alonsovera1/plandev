@@ -21,33 +21,3 @@
 //         cookieBanner.style.display = 'none';
 //     });
 // });
-
-// Menú de hamburguesa
-const hamburgerMenu = document.querySelector('.hamburger-menu');
-const headerNav = document.querySelector('.header-nav');
-const headerActions = document.querySelector('.header-actions');
-
-hamburgerMenu.addEventListener('click', () => {
-    headerNav.classList.toggle('active');
-    headerActions.classList.toggle('active');
-});
-
-
-// Mostrar/Ocultar el botón de volver al principio
-window.addEventListener('scroll', function () {
-    const backToTopButton = document.getElementById('back-to-top');
-    if (window.scrollY > 300) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-});
-
-// Función para volver al principio de la página
-document.getElementById('back-to-top').addEventListener('click', function () {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
