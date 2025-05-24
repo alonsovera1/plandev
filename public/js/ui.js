@@ -1,3 +1,5 @@
+// Lógica de la interfaz
+
 document.addEventListener('DOMContentLoaded', () => {
   // Menú de hamburguesa
   const hamburger = document.querySelector('.hamburger-menu');

@@ -1,3 +1,5 @@
+// Rutas para autenticación (signup, signin, reset password)
+
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const { signup, signin } = require('../controllers/authController');
@@ -19,9 +21,15 @@ router.post('/signup', [
   await signup(req, res);
 });
 
-// Ruta para iniciar sesión
-router.post('/signin', async (req, res) => {
-  // Llamada al controlador para iniciar sesión
+// Ruta para la ruta de inicio de sesión (signin)
+router.post('/signin', [
+  body('email').isEmail().withMessage('Debe ser un email válido'),
+  body('password').notEmpty().withMessage('La contraseña es obligatoria')
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   await signin(req, res);
 });
 

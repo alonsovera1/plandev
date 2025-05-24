@@ -1,4 +1,5 @@
-require('dotenv').config(); // Carga las variables de entorno
+require('dotenv').config(); // Cargar las variables de entorno
+
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
@@ -12,29 +13,16 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Importa las rutas agrupadas, por ejemplo, desde src/routes/index.js
+// Importar las rutas agrupadas
 const indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
-
-// Opcional si se usa Socket.io para chat u otras funciones en tiempo real:
-/* const socketIo = require('socket.io');
-const io = socketIo(server, { cors: { origin: "*" } });
-io.on('connection', (socket) => {
-  console.log('Un usuario se ha conectado:', socket.id);
-  
-  // manejar eventos de chat en tiempo real, etc.
-  socket.on('disconnect', () => {
-    console.log('Un usuario se desconectó:', socket.id);
-  });
-}); */
 
 // Iniciar el servidor
 server.listen(port, () => {
   console.log(`Servidor corriendo en el puerto ${port}`);
 });
 
-
-
+// variable FIREBASE_SERVICE_ACCOUNT_KEY, que se utiliza en el módulo de Firebase
 const admin = require('./src/config/firebase');
 
 // llamada a un metodo sencilla
