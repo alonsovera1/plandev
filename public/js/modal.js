@@ -31,11 +31,18 @@ openModalBtns.forEach(btn => {
 closeModalBtn.onclick = closeModal;
 
 // Cerrar el modal al hacer clic fuera del contenido del modal
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+// window.onclick = function(event) {
+//     if (event.target == modal) {
+//         closeModal();
+//     }
+// }
+
+// Manejar clics para cerrar el modal de signup
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
 
 
 
@@ -72,9 +79,15 @@ openLoginModalBtns.forEach(btn => {
 closeLoginModalBtn.onclick = closeLoginModal;
 
 // Cerrar el modal al hacer clic fuera del contenido del modal
-window.onclick = function(event) {
-    if (event.target == loginModal) {
-        closeLoginModal();
-    }
-}
+// window.onclick = function(event) {
+//     if (event.target == loginModal) {
+//         closeLoginModal();
+//     }
+// }
 
+// Manejar clics para cerrar el modal de signin
+window.addEventListener('click', function(event) {
+  if (event.target === loginModal) {
+    closeLoginModal();
+  }
+});

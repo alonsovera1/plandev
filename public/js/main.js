@@ -25,9 +25,9 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("Usuario autenticado:", user.email);
-    // Aquí podrías, por ejemplo, redirigir al dashboard (home.html) o cargar la vista correspondiente.
+    // Aquí se podría redirigir al dashboard (home.html) o cargar la vista correspondiente.
   } else {
     console.log("No hay usuario autenticado");
-    // Podrías redirigir al landing page o mostrar la opción de iniciar sesión.
+    // Se podria redirigir al landing page o mostrar la opción de iniciar sesión.
   }
 });
