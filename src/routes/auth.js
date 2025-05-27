@@ -1,10 +1,14 @@
-// Rutas para autenticación (signup, signin, reset password)
+// Rutas para autenticación en el servidor
 
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const { signup, signin } = require('../controllers/authController');
 
 const router = express.Router();
+
+const admin = require('../config/firebase');
+// para las operaciones requeridas (verificación de tokens, gestión de usuarios, etc.)
+
 
 // Ruta para registrar un usuario (signup)
 router.post('/signup', [
@@ -34,4 +38,5 @@ router.post('/signin', [
 });
 
 module.exports = router;
+
 

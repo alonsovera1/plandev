@@ -1,4 +1,4 @@
-// Inicizlizar y exportar el objeto admin
+// Firebase admin
 
 const admin = require('firebase-admin');
 const serviceAccount = require(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
