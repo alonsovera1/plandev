@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hamburger && headerNav && headerActions) {
     hamburger.addEventListener('click', () => {
-      headerNav.classList.toggle('active');
-      headerActions.classList.toggle('active');
+      headerNav.classList.toggle('open');
+      headerActions.classList.toggle('open');
     });
   }
 
