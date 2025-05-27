@@ -16,7 +16,7 @@
 /* Contenedor del contenido del modal */
 .modal-content {
     background-color: #ffffff; 
-    margin: 10% auto;
+    margin: 1% auto;
     padding: 20px 30px;
     border: 1px solid #e1e4e8; 
     border-radius: 10px;
@@ -24,7 +24,7 @@
     max-width: 400px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     font-family: 'Roboto', sans-serif; 
-    transform: translateY(-50px); 
+    transform: translateY(-50px);
     transition: transform 0.5s ease; 
 }
 
@@ -72,7 +72,7 @@
 .input-group input {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #e1e4e8; 
+    border: 1px solid #babdc0; 
     border-radius: 6px;
     font-size: 16px;
     background-color: #fafbfc;
@@ -138,3 +138,20 @@
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+
+
+/*Posicion del modal*/
+
+@media (min-width: 769px) {
+    .modal-content {
+        margin: 1% auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+    }
+}
+
