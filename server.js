@@ -5,7 +5,8 @@ const cors = require('cors');
 const http = require('http');
 
 // Inicializar Express y la configuración del puerto
-const app = express();
+// const app = express();
+const app = require('./src/server/app');
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
 

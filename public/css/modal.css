@@ -86,12 +86,27 @@
 }
 
 /* Estilo del botón de registro */
-.button-group {
+.button-group .social-login{
     text-align: center;
     margin-top: 20px;
 }
 
 .button-group button {
+    background-color: #4A90E2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.space-between-button{
+    margin: 10px;
+}
+
+.social-login button {
     background-color: #4A90E2;
     color: white;
     padding: 10px 20px;

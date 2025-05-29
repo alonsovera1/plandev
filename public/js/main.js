@@ -1,13 +1,9 @@
 // Definir la Configuración Firebase
 
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { app } from './firebase-config.js';
-import { auth } from './firebase-config.js';
-// import * as auth from './auth.js';
-import './ui.js';
-import './modal.js';
-
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { auth } from "./firebase-config.js";
+import "./ui.js";
+import "./modal.js"; 
 
 // Inicializar Firebase
 // const firebaseAuth = getAuth(app);
