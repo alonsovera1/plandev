@@ -9,7 +9,7 @@ import './modal.js';
 
 
 // Inicializar Firebase
-const firebaseAuth = getAuth(app);
+// const firebaseAuth = getAuth(app);
 
 // Monitorizar el estado de autenticación del usuario
 onAuthStateChanged(firebaseAuth, (user) => {

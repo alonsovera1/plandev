@@ -1,11 +1,11 @@
 // Lógica del lado del cliente para la autenticacion
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { app } from './firebase-config.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { auth } from './firebase-config.js';
 
 
 // Inicializar la instancia de autenticación
-const firebaseAuth = getAuth(app);
+// const firebaseAuth = getAuth(app);
 
 // Función para registrar usuario
 export const registerUser = async (email, password) => {
