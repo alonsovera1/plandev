@@ -3,10 +3,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import { auth } from './firebase-config.js';
 
-
-// Inicializar la instancia de autenticación
-// const firebaseAuth = getAuth(app);
-
 // Función para registrar usuario
 export const registerUser = async (email, password) => {
   try {
@@ -49,5 +45,3 @@ export const logoutUser = async () => {
   }
 };
 
-
-// Pendiente
