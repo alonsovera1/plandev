@@ -1,78 +1,115 @@
-// Capturar el envio de los formularios y llamar a las funciones definidas en auth.js
-
 import { registerUser, loginUser, signInWithGoogle } from "./auth.js";
 
-// --- Manejador de Registro ---
+// Registro con correo y contraseña
 const signupForm = document.getElementById("signupForm");
 if (signupForm) {
   signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    // Recoger valores del formulario
     const email = document.getElementById("email-signup").value.trim();
     const password = document.getElementById("password-signup").value;
     if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres.");
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'La contraseña debe tener al menos 6 caracteres.',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
       return;
     }
     try {
-      // Registrar al usuario en Firebase
       const user = await registerUser(email, password);
-      console.log("Usuario creado en Firebase:", user);
-      // Enviar datos adicionales al Backend para guardar perfil (opcional)
-      const response = await fetch("http://localhost:3000/api/signup", { // "/api/signup" M
-        // const response = await fetch("http://localhost:3000/api/signup", { ... });
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          uid: user.uid,
-          email: user.email,
-          // username: username
-        })
-      });
-      const result = await response.json();
-      if (result.success) {
-        alert("Registro exitoso. ¡Bienvenido, " + user.email + "!");
-        // Opcional: cerrar el modal o redirigir.
-      } else {
-        alert("Error en el registro: " + result.error);
-      }
+      // Establece la bandera para mostrar el toast de bienvenida en survey.html
+      sessionStorage.setItem("showWelcome", "true");
+      // Redirige inmediatamente a survey.html
+      window.location.href = "survey.html";
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Error al registrar: " + error.message);
+      if (error.code === 'auth/email-already-in-use') {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'error',
+          title: 'El correo ya está en uso',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true
+        });
+      } else {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'error',
+          title: error.message,
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true
+        });
+      }
     }
   });
 }
 
-// --- Manejador de Inicio de Sesión ---
+// Inicio de sesión con correo y contraseña
 const signinForm = document.getElementById("signinForm");
 if (signinForm) {
   signinForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // Recoger valores; asumimos que el campo "username-signin" es, en realidad, el email
     const email = document.getElementById("username-signin").value.trim();
     const password = document.getElementById("password-signin").value;
     try {
       const user = await loginUser(email, password);
-      alert("Inicio de sesión exitoso. ¡Bienvenido, " + user.email + "!");
+      sessionStorage.setItem("showWelcome", "true");
+      window.location.href = "survey.html";
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      alert("Error al iniciar sesión: " + error.message);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: error.message,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
     }
   });
 }
 
-// --- Manejador de Inicio de Sesión con Google ---
-const googleSignInButtons = document.querySelectorAll(".google-signin");
-if (googleSignInButtons) {
-  googleSignInButtons.forEach((btn) => {
+// Inicio de sesión con Google
+const googleButtons = document.querySelectorAll(".google-signin");
+if (googleButtons) {
+  googleButtons.forEach((btn) => {
     btn.addEventListener("click", async () => {
       try {
         const user = await signInWithGoogle();
-        alert("Inicio de sesión con Google exitoso. ¡Bienvenido, " + user.email + "!");
+        sessionStorage.setItem("showWelcome", "true");
+        window.location.href = "survey.html";
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error);
-        alert("Error al iniciar sesión con Google: " + error.message);
+        if (error.code === 'auth/email-already-in-use') {
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: 'El correo ya está en uso',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        } else {
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: error.message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        }
       }
     });
   });

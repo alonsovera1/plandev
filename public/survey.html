@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Encuesta - PlanDev</title>
-  <link rel="stylesheet" href="global.css">
   <link rel="stylesheet" href="./css/survey.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <!-- Header conciso: logotipo textual y título corto -->
   <header>
     <h1 class="logo">PlanDev</h1>
     <h2>Encuesta de Intereses</h2>
   </header>
-  <!-- Layout principal: barra lateral de progreso + contenido de la encuesta -->
   <div class="survey-layout">
   <main class="survey-content">
-    <!-- Barra de progreso en la parte superior -->
+    <!-- Barra de progreso -->
     <div class="progress-container">
       <div class="progress-bar">
         <div class="progress-fill"></div>
@@ -29,7 +27,7 @@
     </aside>
     <main class="survey-content">
       <form id="surveyForm">
-        <!-- Pregunta 1 (selección múltiple con opción "Otro") -->
+        <!-- Pregunta 1 -->
         <div class="question" id="q1" data-question-number="1">
           <h2>¿Cuáles son las áreas de la informática de tu interés?</h2>
           <div class="option-buttons">
@@ -54,7 +52,7 @@
             <input type="text" class="other-input" name="other_interest" placeholder="Especifica otra..." style="display:none;">
           </div>
         </div>
-        <!-- Pregunta 2 (selección múltiple con opción "Otro") -->
+        <!-- Pregunta 2 -->
         <div class="question" id="q2" data-question-number="2">
           <h2>¿Qué áreas de la programación son de tu interés?</h2>
           <div class="option-buttons">

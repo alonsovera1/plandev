@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Verifica y muestra el toast de bienvenida de inmediato
+  if (sessionStorage.getItem("showWelcome") === "true") {
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: '¡Bienvenido a PlanDev!',
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true
+    });
+    sessionStorage.removeItem("showWelcome");
+  }
+
   const questions = Array.from(document.querySelectorAll(".question"));
   let currentIdx = 0;
   const total = questions.length;
@@ -18,16 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtn.style.display = (idx === total - 1) ? "none" : "inline-block";
     submitBtn.style.display = (idx === total - 1) ? "inline-block" : "none";
     
-    // Si es la primera pregunta, alinear la navegación a la derecha; caso contrario, usar espacio entre botones.
+    // Alinear navegación: si es la primera pregunta, todos a la derecha; de lo contrario, espacio entre botones.
     if (idx === 0) {
-        document.querySelector(".survey-navigation").style.justifyContent = "flex-end";
+      document.querySelector(".survey-navigation").style.justifyContent = "flex-end";
     } else {
-        document.querySelector(".survey-navigation").style.justifyContent = "space-between";
+      document.querySelector(".survey-navigation").style.justifyContent = "space-between";
     }
     
     prevBtn.style.display = (idx === 0) ? "none" : "inline-block";
-    }
-
+  }
   
   showQuestion(currentIdx);
   
@@ -44,13 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
       showQuestion(currentIdx);
     }
   });
-
-  // Para lograr efecto inmediato de selección se usa mousedown
+  
+  // Efecto inmediato de selección con mousedown
   const optionCards = document.querySelectorAll(".option-card");
   optionCards.forEach(card => {
     card.addEventListener("mousedown", () => {
       const questionDiv = card.closest(".question");
-      // Define preguntas de selección simple (por id) para las cuales se permite solo una opción
       const singleSelectIds = ["q3", "q5", "q9", "q11", "q12", "q13", "q14", "q15"];
       if (singleSelectIds.includes(questionDiv.id)) {
         questionDiv.querySelectorAll(".option-card").forEach(opt => opt.classList.remove("selected"));
@@ -58,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         card.classList.toggle("selected");
       }
-      // Si se selecciona "otro", mostrar el input correspondiente
+      // Mostrar input si el valor seleccionado contiene "otro"
       if (card.getAttribute("data-value").toLowerCase().includes("otro")) {
         const otherInput = card.parentElement.querySelector("input[type='text']");
         if (otherInput) {
@@ -84,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
       responses[qid] = selected;
     });
     console.log("Survey responses:", responses);
-    // Aquí se enviarían los datos a la base de datos; luego se redirige a home.html
     window.location.href = "home.html";
   });
 });
