@@ -1,93 +1,118 @@
 // Modal para signup
 
-const modal = document.getElementById('signupModal');
-const openModalBtns = document.querySelectorAll('.open-signup-modal');
-const closeModalBtn = document.getElementsByClassName('close')[0];
+const signupModal = document.getElementById('signupModal');
+const openSignupBtns = document.querySelectorAll('.open-signup-modal');
+const closeSignupBtn = signupModal.getElementsByClassName('close')[0];
 
-// Función para abrir el modal con transición
+
+// Abrir signup
 function openModal() {
-    modal.style.display = 'block';
-    setTimeout(() => {
-        modal.style.opacity = '1';
-        modal.querySelector('.modal-content').style.transform = 'translateY(0)';
-    }, 10); 
+    if (signupModal) {
+        signupModal.style.display = 'block';
+        setTimeout(() => {
+            signupModal.style.opacity = '1';
+            signupModal.querySelector('.modal-content').style.transform = 'translateY(0)';
+        }, 10);
+    }
 }
 
-// Función para cerrar el modal con transición
+// Cerrar signup
 function closeModal() {
-    modal.style.opacity = '0';
-    modal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 500); 
+    if (signupModal) {
+        signupModal.style.opacity = '0';
+        signupModal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+        setTimeout(() => {
+            signupModal.style.display = 'none';
+        }, 500);
+    }
 }
 
-// Abrir el modal al hacer clic en cualquiera de los botones con la clase "open-signup-modal"
-openModalBtns.forEach(btn => {
-    btn.onclick = openModal;
-});
+if (openSignupBtns && openSignupBtns.length > 0) {
+    openSignupBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+}
 
-// Cerrar el modal al hacer clic en el botón de cierre
-closeModalBtn.onclick = closeModal;
+if (closeSignupBtn) {
+    closeSignupBtn.addEventListener('click', closeModal);
+}
 
-// Cerrar el modal al hacer clic fuera del contenido del modal
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         closeModal();
-//     }
-// }
-
-// Manejar clics para cerrar el modal de signup
 window.addEventListener('click', function(event) {
-  if (event.target === modal) {
-    closeModal();
-  }
+    if (event.target === signupModal) {
+        closeModal();
+    }
 });
 
 
 
-// Modal para signin
+
+// Modal de inicio de sesion
 
 const loginModal = document.getElementById('loginModal');
-const openLoginModalBtns = document.querySelectorAll('.open-login-modal');
-const closeLoginModalBtn = loginModal.getElementsByClassName('close')[0];
+const openLoginBtns = document.querySelectorAll('.open-login-modal');
+const closeLoginBtn = loginModal ? loginModal.getElementsByClassName('close')[0] : null;
 
-// Función para abrir el modal con transición
+// Abrir signin
 function openLoginModal() {
-    loginModal.style.display = 'block';
-    setTimeout(() => {
-        loginModal.style.opacity = '1';
-        loginModal.querySelector('.modal-content').style.transform = 'translateY(0)';
-    }, 10);
+    if (loginModal) {
+        loginModal.style.display = 'block';
+        setTimeout(() => {
+            loginModal.style.opacity = '1';
+            loginModal.querySelector('.modal-content').style.transform = 'translateY(0)';
+        }, 10);
+    }
 }
 
-// Función para cerrar el modal con transición
+// Cerrar signin
 function closeLoginModal() {
-    loginModal.style.opacity = '0';
-    loginModal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
-    setTimeout(() => {
-        loginModal.style.display = 'none';
-    }, 500); // Tiempo que dura la transición
+    if (loginModal) {
+        loginModal.style.opacity = '0';
+        loginModal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+        setTimeout(() => {
+            loginModal.style.display = 'none';
+        }, 500);
+    }
 }
 
-// Abrir el modal al hacer clic en cualquiera de los botones con la clase "open-login-modal"
-openLoginModalBtns.forEach(btn => {
-    btn.onclick = openLoginModal;
-});
+// Evento en cada boton que abra el modal de inicio de sesión
+if (openLoginBtns && openLoginBtns.length > 0) {
+    openLoginBtns.forEach(btn => {
+        btn.addEventListener('click', openLoginModal);
+    });
+}
 
-// Cerrar el modal al hacer clic en el botón de cierre
-closeLoginModalBtn.onclick = closeLoginModal;
+if (closeLoginBtn) {
+    closeLoginBtn.addEventListener('click', closeLoginModal);
+}
 
-// Cerrar el modal al hacer clic fuera del contenido del modal
-// window.onclick = function(event) {
-//     if (event.target == loginModal) {
-//         closeLoginModal();
-//     }
-// }
-
-// Manejar clics para cerrar el modal de signin
+// Cierra el modal si se hace click fuera del contenido
 window.addEventListener('click', function(event) {
-  if (event.target === loginModal) {
-    closeLoginModal();
-  }
+    if (event.target === loginModal) {
+        closeLoginModal();
+    }
 });
+
+
+
+// Combiar entre modales
+
+// Enlace en el modal de registro para cambiar a inicio de sesión.
+const switchToLoginLink = document.querySelector('.switch-to-login');
+if (switchToLoginLink) {
+    switchToLoginLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeModal();
+        openLoginModal();
+    });
+}
+
+// Enlace en el modal de inicio de sesión para cambiar a registro.
+const switchToSignupLink = document.querySelector('.switch-to-signup');
+if (switchToSignupLink) {
+    switchToSignupLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeLoginModal();
+        openModal();
+    });
+}
+
