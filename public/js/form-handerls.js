@@ -1,6 +1,6 @@
 // Capturar el envio de los formularios y llamar a las funciones definidas en auth.js
 
-import { registerUser, loginUser } from "./auth.js";
+import { registerUser, loginUser, signInWithGoogle } from "./auth.js";
 
 // --- Manejador de Registro ---
 const signupForm = document.getElementById("signupForm");
@@ -59,5 +59,21 @@ if (signinForm) {
       console.error("Error al iniciar sesión:", error);
       alert("Error al iniciar sesión: " + error.message);
     }
+  });
+}
+
+// --- Manejador de Inicio de Sesión con Google ---
+const googleSignInButtons = document.querySelectorAll(".google-signin");
+if (googleSignInButtons) {
+  googleSignInButtons.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        const user = await signInWithGoogle();
+        alert("Inicio de sesión con Google exitoso. ¡Bienvenido, " + user.email + "!");
+      } catch (error) {
+        console.error("Error al iniciar sesión con Google:", error);
+        alert("Error al iniciar sesión con Google: " + error.message);
+      }
+    });
   });
 }

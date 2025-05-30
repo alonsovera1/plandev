@@ -1,6 +1,13 @@
 // Lógica del lado del cliente para la autenticacion
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  sendPasswordResetEmail, 
+  signOut,
+  signInWithPopup,
+  GoogleAuthProvider 
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import { auth } from './firebase-config.js';
 
 // Función para registrar usuario
@@ -21,6 +28,18 @@ export const loginUser = async (email, password) => {
     return userCredential.user;
   } catch (error) {
     console.error('Error en inicio de sesión:', error);
+    throw error;
+  }
+};
+
+// Función para el popup de inicio de sesión con Google
+export const signInWithGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
+  } catch (error) {
+    console.error('Error al iniciar sesión con Google:', error);
     throw error;
   }
 };
