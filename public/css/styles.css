@@ -717,14 +717,14 @@ footer {
   .footer-logo{
     margin-bottom: 10px;
   }
-  /* En la fila superior, que contenga la parte izquierda y los iconos */
+  /* En la fila superior contiene la parte izquierda y los iconos */
   .footer-bottom-left {
     order: 1;      
     flex: 1 1 45%;
   }
   .footer-bottom-right {
     order: 2; 
-    flex: 1 1 45%; 
+    flex: 1 1 45%;
   }
 
   .footer-bottom-left {
@@ -738,7 +738,7 @@ footer {
     order: 3;
     flex: 1 1 100%;
     text-align: center;
-    margin-top: 10px; /* Espaciado entre filas */
+    margin-top: 10px;
   }
 }
 
