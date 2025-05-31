@@ -98,6 +98,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Manejador para el formulario de inicio de sesión (signin) ---
+
+const signinForm = document.getElementById("signinForm");
+if (signinForm) {
+  signinForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("username-signin").value.trim();
+    const password = document.getElementById("password-signin").value;
+    
+    // Validación básica del lado del cliente
+    if (password.length < 6) {
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'La contraseña debe tener al menos 6 caracteres.',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
+      return;
+    }
+    
+    try {
+      // Esta función debe usar, por ejemplo, signInWithEmailAndPassword de Firebase
+      const user = await loginUser(email, password);
+      // Redirige a la vista deseada si la autenticación es exitosa
+      window.location.href = "survey.html";
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      // Muestra el error (por ejemplo: 'contraseña incorrecta' o 'usuario no encontrado') mediante un toast.
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: error.message,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
+    }
+  });
+}
+
   // Manejador para inicio de sesión con Google
   if (googleButtons) {
     googleButtons.forEach((btn) => {
