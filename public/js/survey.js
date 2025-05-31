@@ -1,101 +1,109 @@
+// Encuesta
+
+import { doc, getDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import { auth, db } from "./firebase-config.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifica y muestra el toast de bienvenida de inmediato
-  if (sessionStorage.getItem("showWelcome") === "true") {
-    Swal.fire({
-      toast: true,
-      position: 'top-end',
-      icon: 'success',
-      title: '¡Bienvenido a PlanDev!',
-      showConfirmButton: false,
-      timer: 5000,
-      timerProgressBar: true
-    });
-    sessionStorage.removeItem("showWelcome");
-  }
-
-  const questions = Array.from(document.querySelectorAll(".question"));
-  let currentIdx = 0;
-  const total = questions.length;
-  const nextBtn = document.getElementById("nextBtn");
-  const prevBtn = document.getElementById("prevBtn");
-  const submitBtn = document.getElementById("submitBtn");
-  const progressFill = document.querySelector(".progress-fill");
-  const currentQuestionDisplay = document.getElementById("currentQuestion");
-  const totalQuestionsDisplay = document.getElementById("totalQuestions");
-
-  totalQuestionsDisplay.textContent = total;
-  
-  function showQuestion(idx) {
-    questions.forEach((q, i) => { q.style.display = i === idx ? "block" : "none"; });
-    currentQuestionDisplay.textContent = idx + 1;
-    progressFill.style.width = (((idx + 1) / total) * 100) + "%";
-    nextBtn.style.display = (idx === total - 1) ? "none" : "inline-block";
-    submitBtn.style.display = (idx === total - 1) ? "inline-block" : "none";
+  // Espera el estado de autenticación usando onAuthStateChanged
+  auth.onAuthStateChanged(async (currentUser) => {
+    if (!currentUser) {
+      // Si no hay usuario, redirige a index.html
+      window.location.href = "index.html";
+      return;
+    }
     
-    // Alinear navegación: si es la primera pregunta, todos a la derecha; de lo contrario, espacio entre botones.
-    if (idx === 0) {
-      document.querySelector(".survey-navigation").style.justifyContent = "flex-end";
+    // Consultar el perfil del usuario en Firestore
+    const userProfileRef = doc(db, "userProfiles", currentUser.uid);
+    const userProfileSnap = await getDoc(userProfileRef);
+
+    if (userProfileSnap.exists()) {
+      const profileData = userProfileSnap.data();
+      if (profileData.surveyCompleted) {
+        // Si ya completó la encuesta, redirige a home.html
+        window.location.href = "home.html";
+        return;
+      }
     } else {
-      document.querySelector(".survey-navigation").style.justifyContent = "space-between";
+      console.error("Perfil de usuario no encontrado");
+      window.location.href = "index.html";
+      return;
     }
-    
-    prevBtn.style.display = (idx === 0) ? "none" : "inline-block";
-  }
-  
-  showQuestion(currentIdx);
-  
-  nextBtn.addEventListener("click", () => {
-    if (currentIdx < total - 1) {
-      currentIdx++;
-      showQuestion(currentIdx);
-    }
-  });
-  
-  prevBtn.addEventListener("click", () => {
-    if (currentIdx > 0) {
-      currentIdx--;
-      showQuestion(currentIdx);
-    }
-  });
-  
-  // Efecto inmediato de selección con mousedown
-  const optionCards = document.querySelectorAll(".option-card");
-  optionCards.forEach(card => {
-    card.addEventListener("mousedown", () => {
-      const questionDiv = card.closest(".question");
-      const singleSelectIds = ["q3", "q5", "q9", "q11", "q12", "q13", "q14", "q15"];
-      if (singleSelectIds.includes(questionDiv.id)) {
-        questionDiv.querySelectorAll(".option-card").forEach(opt => opt.classList.remove("selected"));
-        card.classList.add("selected");
-      } else {
-        card.classList.toggle("selected");
-      }
-      // Mostrar input si el valor seleccionado contiene "otro"
-      if (card.getAttribute("data-value").toLowerCase().includes("otro")) {
-        const otherInput = card.parentElement.querySelector("input[type='text']");
-        if (otherInput) {
-          otherInput.style.display = card.classList.contains("selected") ? "block" : "none";
-        }
-      }
-    });
-  });
-  
-  submitBtn.addEventListener("click", () => {
-    let responses = {};
-    questions.forEach(q => {
-      const qid = q.id;
-      let selected = [];
-      q.querySelectorAll(".option-card.selected").forEach(opt => {
-        let val = opt.getAttribute("data-value");
-        if (val.toLowerCase().includes("otro")) {
-          const inpt = q.querySelector("input[type='text']");
-          if (inpt && inpt.style.display === "block") { val = inpt.value; }
-        }
-        selected.push(val);
+
+    // Si el usuario está autenticado y es nuevo (no completó la encuesta), continúa con la configuración de la encuesta
+    const questions = Array.from(document.querySelectorAll(".question"));
+    let currentIdx = 0;
+    const total = questions.length;
+    const progressFill = document.querySelector(".progress-fill");
+    const currentQuestionDisplay = document.getElementById("currentQuestion");
+    const totalQuestionsDisplay = document.getElementById("totalQuestions");
+    totalQuestionsDisplay.textContent = total;
+
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function showQuestion(idx) {
+      questions.forEach((q, i) => {
+        q.style.display = (i === idx) ? "block" : "none";
       });
-      responses[qid] = selected;
+      currentQuestionDisplay.textContent = idx + 1;
+      progressFill.style.width = (((idx + 1) / total) * 100) + "%";
+
+      const navigation = document.querySelector(".survey-navigation");
+      navigation.style.justifyContent = (idx === 0) ? "flex-end" : "space-between";
+
+      nextBtn.style.display = (idx === total - 1) ? "none" : "inline-block";
+      submitBtn.style.display = (idx === total - 1) ? "inline-block" : "none";
+      prevBtn.style.display = (idx === 0) ? "none" : "inline-block";
+    }
+
+    showQuestion(currentIdx);
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIdx < total - 1) {
+        currentIdx++;
+        showQuestion(currentIdx);
+      }
     });
-    console.log("Survey responses:", responses);
-    window.location.href = "home.html";
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIdx > 0) {
+        currentIdx--;
+        showQuestion(currentIdx);
+      }
+    });
+
+    submitBtn.addEventListener("click", async () => {
+      let responses = {};
+      questions.forEach((q) => {
+        const qid = q.id;
+        let selected = [];
+        q.querySelectorAll(".option-card.selected").forEach((opt) => {
+          let val = opt.getAttribute("data-value");
+          if (val.toLowerCase().includes("otro")) {
+            const inpt = q.querySelector("input[type='text']");
+            if (inpt && inpt.style.display === "block") {
+              val = inpt.value;
+            }
+          }
+          selected.push(val);
+        });
+        responses[qid] = selected;
+      });
+
+      try {
+        await addDoc(collection(db, "surveyResponses"), {
+          userId: currentUser.uid,
+          responses: responses,
+          createdAt: new Date()
+        });
+        // Actualiza el perfil para marcar que la encuesta fue completada
+        await updateDoc(userProfileRef, { surveyCompleted: true });
+        window.location.href = "home.html";
+      } catch (error) {
+        console.error("Error al guardar la encuesta:", error);
+        // Aquí puedes mostrar un mensaje de error
+      }
+    });
   });
 });
