@@ -29,6 +29,47 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Agregar event listeners a cada opción para gestionar la selección
+    const optionCards = document.querySelectorAll('.option-card');
+    optionCards.forEach(card => {
+      card.addEventListener('click', function () {
+        const parentQuestion = this.closest('.question');
+        // Selecciona todas las opciones de la pregunta
+        const allOptionCards = parentQuestion.querySelectorAll('.option-card');
+        
+        // Si la pregunta tiene más de 4 opciones, permite selección múltiple:
+        if (allOptionCards.length > 4) {
+          // Simplemente alterna la clase "selected"
+          this.classList.toggle('selected');
+        } else {
+          // Si la pregunta tiene 4 o menos opciones, permite solo selección única:
+          allOptionCards.forEach(el => el.classList.remove('selected'));
+          this.classList.add('selected');
+        }
+        
+        // Manejo del input "otro"
+        if (this.getAttribute('data-value').toLowerCase() === 'otro') {
+          // Si la opción "otro" está seleccionada, muestra el campo de texto asociado; en modo múltiple, solo se muestra si se selecciona
+          const otherInput = parentQuestion.querySelector('.other-input');
+          if (otherInput) {
+            if (this.classList.contains('selected')) {
+              otherInput.style.display = 'block';
+            } else {
+              otherInput.style.display = 'none';
+            }
+          }
+        } else {
+          // En preguntas con selección múltiple, si se hace clic en otra opción, se oculta el input "otro"
+          const otherInput = parentQuestion.querySelector('.other-input');
+          if (otherInput) {
+            otherInput.style.display = 'none';
+          }
+        }
+      });
+    });
+
+
+
     // Si el usuario está autenticado y es nuevo (no completó la encuesta), continúa con la configuración de la encuesta
     const questions = Array.from(document.querySelectorAll(".question"));
     let currentIdx = 0;
