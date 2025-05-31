@@ -154,6 +154,38 @@
     transform-origin: bottom left;
 }
 
+/* Mostrar contraseña */
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el botón */
+}
+
+.password-container button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.password-container button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ocultar icono de mostrar contraseña default */
+input[type="password"]::-ms-reveal {
+    display: none;
+}
 
 
 /*Posicion del modal*/
