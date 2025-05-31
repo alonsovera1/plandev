@@ -56,7 +56,7 @@ header .logo {
 /* Área principal de contenido de la encuesta */
 .survey-content {
   flex: 1;
-  padding: 40px;
+  padding: 10px;
   background-color: #f7f7f7;
   overflow-y: auto;
 }

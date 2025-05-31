@@ -13,12 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordSigninInput = document.getElementById("password-signin");
   const togglePasswordSigninBtn = document.getElementById("togglePasswordSignin");
 
-  // Google sign-in buttons
+  // Botones de Google Signin
   const googleButtons = document.querySelectorAll(".google-signin");
 
-  /* -----------------------------------------------------------------
-      Mostrar/ocultar la contraseña en Signup
-  ------------------------------------------------------------------ */
+  // Mostrar/ocultar la contraseña en Signup
   if (passwordSignupInput && togglePasswordBtn) {
     togglePasswordBtn.addEventListener("click", () => {
       if (passwordSignupInput.type === "password") {
@@ -31,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -----------------------------------------------------------------
-      Mostrar/ocultar la contraseña en Signin
-  ------------------------------------------------------------------ */
+  // Mostrar/ocultar la contraseña en Signin
   if (passwordSigninInput && togglePasswordSigninBtn) {
     togglePasswordSigninBtn.addEventListener("click", () => {
       if (passwordSigninInput.type === "password") {
@@ -46,9 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -----------------------------------------------------------------
-      Validación en tiempo real para el formulario de Signup
-  ------------------------------------------------------------------ */
+  // Validación en tiempo real para el formulario de Signup
   if (signupForm && passwordSignupInput) {
     passwordSignupInput.addEventListener("input", () => {
       const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$/;
@@ -62,12 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -----------------------------------------------------------------
-      Manejador del formulario de Registro (signup)
-  ------------------------------------------------------------------ */
+  // Manejador del formulario de Registro (signup)
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
       e.preventDefault();
+      // Si la contraseña no es válida, se muestra su mensaje
       if (!passwordSignupInput.checkValidity()) {
         passwordSignupInput.reportValidity();
         return;
@@ -76,13 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = passwordSignupInput.value;
       try {
         const user = await registerUser(email, password);
-        // Crea el perfil del usuario en Firestore y marca surveyCompleted:false
+        // Crea el perfil del usuario en Firestore y marca surveyCompleted: false
         await setDoc(doc(db, "userProfiles", user.uid), {
           surveyCompleted: false,
           email: user.email,
           createdAt: new Date()
         });
-        // Establece el flag y redirige a survey.html
+        // Establece flags en sessionStorage, si se desean, y redirige a survey.html
         sessionStorage.setItem("firstTime", "true");
         sessionStorage.setItem("showWelcome", "true");
         window.location.href = "survey.html";
@@ -113,50 +106,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -----------------------------------------------------------------
-      Manejador para el formulario de inicio de sesión (signin)
-  ------------------------------------------------------------------ */
+  // Manejador para el formulario de inicio de sesión (signin)
   if (signinForm) {
     signinForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("username-signin").value.trim();
       const password = document.getElementById("password-signin").value;
-      
       if (password.length < 6) {
         Swal.fire({
           toast: true,
-          position: 'top-end',
-          icon: 'error',
-          title: 'La contraseña debe tener al menos 6 caracteres.',
+          position: "top-end",
+          icon: "error",
+          title: "La contraseña debe tener al menos 6 caracteres.",
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true
         });
         return;
       }
-      
       try {
         const user = await loginUser(email, password);
         // Consultar el perfil del usuario para decidir la redirección
-        const profileSnap = await getDoc(doc(db, "userProfiles", user.uid));
+        const profileRef = doc(db, "userProfiles", user.uid);
+        let profileSnap = await getDoc(profileRef);
         if (profileSnap.exists()) {
           const profile = profileSnap.data();
-          console.log("Perfil del usuario:", profile);
           if (profile.surveyCompleted === true) {
             window.location.href = "home.html";
           } else {
             window.location.href = "survey.html";
           }
         } else {
-          // Si el perfil no existe, asumimos que es nuevo y lo enviamos a la encuesta
+          // Si el perfil no existe, lo creamos asumiendo que el usuario aún no completó la encuesta
+          await setDoc(profileRef, {
+            surveyCompleted: false,
+            email: user.email,
+            createdAt: new Date()
+          });
           window.location.href = "survey.html";
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         Swal.fire({
           toast: true,
-          position: 'top-end',
-          icon: 'error',
+          position: "top-end",
+          icon: "error",
           title: error.message,
           showConfirmButton: false,
           timer: 3000,
@@ -166,16 +160,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -----------------------------------------------------------------
-      Manejador para inicio de sesión con Google
-  ------------------------------------------------------------------ */
+  // Manejador para inicio de sesión con Google
   if (googleButtons) {
     googleButtons.forEach((btn) => {
       btn.addEventListener("click", async () => {
         try {
           const user = await signInWithGoogle();
-          // Consulta el perfil del usuario para determinar la redirección
-          const profileSnap = await getDoc(doc(db, "userProfiles", user.uid));
+          // Consultar el perfil del usuario para determinar la redirección
+          const profileRef = doc(db, "userProfiles", user.uid);
+          let profileSnap = await getDoc(profileRef);
           sessionStorage.setItem("showWelcome", "true");
           if (profileSnap.exists() && profileSnap.data().surveyCompleted === true) {
             window.location.href = "home.html";

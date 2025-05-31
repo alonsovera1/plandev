@@ -1,6 +1,7 @@
 // Encuesta
 
-import { doc, getDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+// Ahora se importa setDoc junto a doc, getDoc, updateDoc, addDoc y collection
+import { doc, getDoc, setDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { auth, db } from "./firebase-config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,19 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Consultar el perfil del usuario en Firestore
     const userProfileRef = doc(db, "userProfiles", currentUser.uid);
-    const userProfileSnap = await getDoc(userProfileRef);
+    let userProfileSnap = await getDoc(userProfileRef);
 
     if (userProfileSnap.exists()) {
       const profileData = userProfileSnap.data();
-      if (profileData.surveyCompleted) {
+      if (profileData.surveyCompleted === true) {
         // Si ya completó la encuesta, redirige a home.html
         window.location.href = "home.html";
         return;
       }
     } else {
-      console.error("Perfil de usuario no encontrado");
-      window.location.href = "index.html";
-      return;
+      // Si no existe documento de perfil, lo creamos asumiendo que aún no completó la encuesta
+      await setDoc(userProfileRef, {
+        surveyCompleted: false,
+        email: currentUser.email,
+        createdAt: new Date()
+      });
+      // Actualizamos la variable para uso futuro (opcional)
+      userProfileSnap = await getDoc(userProfileRef);
     }
 
     // Agregar event listeners a cada opción para gestionar la selección
@@ -67,8 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-
-
 
     // Si el usuario está autenticado y es nuevo (no completó la encuesta), continúa con la configuración de la encuesta
     const questions = Array.from(document.querySelectorAll(".question"));
