@@ -1,6 +1,5 @@
 // Encuesta
 
-// Ahora se importa setDoc junto a doc, getDoc, updateDoc, addDoc y collection
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { auth, db } from "./firebase-config.js";
 
@@ -45,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Si la pregunta tiene más de 4 opciones, permite selección múltiple:
         if (allOptionCards.length > 4) {
-          // Simplemente alterna la clase "selected"
           this.classList.toggle('selected');
         } else {
           // Si la pregunta tiene 4 o menos opciones, permite solo selección única:
@@ -55,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Manejo del input "otro"
         if (this.getAttribute('data-value').toLowerCase() === 'otro') {
-          // Si la opción "otro" está seleccionada, muestra el campo de texto asociado; en modo múltiple, solo se muestra si se selecciona
           const otherInput = parentQuestion.querySelector('.other-input');
           if (otherInput) {
             if (this.classList.contains('selected')) {
@@ -147,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "home.html";
       } catch (error) {
         console.error("Error al guardar la encuesta:", error);
-        // Aquí puedes mostrar un mensaje de error
+        // mostrar un mensaje de error
       }
     });
   });

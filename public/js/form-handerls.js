@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordSigninInput = document.getElementById("password-signin");
   const togglePasswordSigninBtn = document.getElementById("togglePasswordSignin");
 
-  // Botones de Google Signin
   const googleButtons = document.querySelectorAll(".google-signin");
 
   // Mostrar/ocultar la contraseña en Signup
@@ -106,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   // Manejador para el formulario de inicio de sesión (signin)
   if (signinForm) {
     signinForm.addEventListener("submit", async (e) => {
@@ -120,13 +120,13 @@ document.addEventListener("DOMContentLoaded", () => {
           title: "La contraseña debe tener al menos 6 caracteres.",
           showConfirmButton: false,
           timer: 3000,
-          timerProgressBar: true
+          timerProgressBar: true,
         });
         return;
       }
       try {
         const user = await loginUser(email, password);
-        // Consultar el perfil del usuario para decidir la redirección
+        // Aquí va la lógica para consultar el perfil y redirigir, etc.
         const profileRef = doc(db, "userProfiles", user.uid);
         let profileSnap = await getDoc(profileRef);
         if (profileSnap.exists()) {
@@ -137,28 +137,40 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "survey.html";
           }
         } else {
-          // Si el perfil no existe, lo creamos asumiendo que el usuario aún no completó la encuesta
+          // Si el perfil no existe se crea, asumiendo que el usuario aún no completó la encuesta
           await setDoc(profileRef, {
             surveyCompleted: false,
             email: user.email,
-            createdAt: new Date()
+            createdAt: new Date(),
           });
           window.location.href = "survey.html";
         }
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
+        let errorMessage = "";
+        if (error.code === "auth/wrong-password" || error.code === "auth/invalid-login-credentials") {
+          errorMessage = "La contraseña es incorrecta. Por favor, inténtalo nuevamente.";
+        }
+        else if (error.code === "auth/network-request-failed" || !navigator.onLine) {
+          errorMessage = "No tienes conexión a Internet. Por favor, verifica tu red e inténtalo nuevamente.";
+        }
+        // Otros errores
+        else {
+          errorMessage = error.message || "Error al iniciar sesión. Inténtalo nuevamente.";
+        }
         Swal.fire({
           toast: true,
           position: "top-end",
           icon: "error",
-          title: error.message,
+          title: errorMessage,
           showConfirmButton: false,
           timer: 3000,
-          timerProgressBar: true
+          timerProgressBar: true,
         });
       }
     });
   }
+
 
   // Manejador para inicio de sesión con Google
   if (googleButtons) {
