@@ -1,27 +1,30 @@
 // home.js
-import { auth } from "./firebase-config.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { logoutUser } from "./auth.js";
+import { loadProjects } from "./projects.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  auth.onAuthStateChanged((user) => {
-    if (!user) {
-      console.log("Usuario no autenticado, redirigiendo a index.html");
-      window.location.href = "index.html";
-    }
-  });
+export function initHome() {
+  console.log("Inicializando la vista Home...");
 
-  const logoutButton = document.getElementById("logoutButton");
-  if (logoutButton) {
-    logoutButton.addEventListener("click", async () => {
-      try {
-        await signOut(auth);
-        console.log("Sesión cerrada exitosamente.");
-        window.location.href = "index.html";
-      } catch (error) {
-        console.error("Error al cerrar sesión:", error);
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      // Evita que se modifique el hash o se realice una acción por defecto
+      e.preventDefault();
+      if (confirm("¿Estás seguro de cerrar sesión?")) {
+        logoutUser()
+          .then(() => {
+            // Opcionalmente, se puede limpiar el hash o reemplazar el estado
+            history.replaceState(null, "", "index.html");
+            window.location.href = "index.html";
+          })
+          .catch(err => {
+            console.error("Error al cerrar sesión:", err);
+            alert("No se pudo cerrar la sesión. Intenta nuevamente.");
+          });
       }
     });
-  } else {
-    console.error("No se encontró el botón de cerrar sesión (ID: logoutButton)");
   }
-});
+
+  // Inicializa otras funcionalidades (ej. carga de proyectos)
+  loadProjects();
+}

@@ -1,13 +1,114 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlanDev - Espacio de Trabajo</title>
+  <link rel="stylesheet" href="./css/home.css">
+  <!-- incluir iconos o fuentes, por ejemplo Font Awesome si lo requieres -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
-    <button id="logoutButton">Cerrar Sesión</button>
-    <script type="module" src="./js/home.js"></script>
+  <header class="main-header">
+    <div class="header-left">
+      <!-- Logo clickable (redirige a home) -->
+      <div class="logo" onclick="window.location.href='home.html'">
+        PlanDev
+      </div>
+      <!-- Menú de navegación -->
+      <nav class="nav-menu">
+        <!-- Los enlaces pueden tener atributos data-route para ser gestionados por el router SPA -->
+        <a href="#home" data-route="home">Inicio</a>
+        <a href="#teams" data-route="teams">Equipos</a>
+        <a href="#projects" data-route="projects">Proyectos</a>
+      </nav>
+    </div>
+    
+    <div class="header-right">
+      <!-- Botón para crear nuevo proyecto -->
+      <button id="btn-create" title="Crear nuevo proyecto">+</button>
+      
+      <!-- Ícono de Notificaciones con contador -->
+      <div class="icon notif-icon" title="Notificaciones">
+        <span class="notif-count">2</span>
+        <!-- Puedes utilizar un SVG o FontAwesome aquí -->
+        <!-- <i class="fas fa-bell"></i> -->
+      </div>
+      
+      <!-- Ícono de Ayuda -->
+      <div class="icon help-icon" title="Ayuda">
+        <!-- Ejemplo con texto o icono -->
+        ?
+      </div>
+      
+      <!-- Perfil del usuario: muestra la inicial, al hacer click despliega el menú -->
+      <div class="profile-dropdown">
+        <div class="profile-icon" title="Perfil">
+          A <!-- Se mostrará la inicial del nombre del usuario -->
+        </div>
+        <!-- Menú desplegable del perfil -->
+        <div class="dropdown-menu">
+          <a href="#profile" data-route="profile">Información de perfil</a>
+          <a href="#settings" data-route="settings">Configuración</a>
+          <a href="javascript:void(0)" id="logoutBtn">Cerrar sesión</a>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- ASIDE: Barra lateral izquierda con herramientas -->
+  <aside class="side-tools">
+    <ul>
+      <li>
+        <button id="btn-chat" title="Chat">
+          Chat
+          <!-- Puedes incluir un icono aquí -->
+        </button>
+      </li>
+      <li>
+        <button id="btn-calendar" title="Calendario">
+          Calendario
+        </button>
+      </li>
+      <li>
+        <button id="btn-invite" title="Invitar miembros">
+          Invitar Miembros
+        </button>
+      </li>
+      <!-- Agrega más botones/herramientas según la funcionalidad necesaria -->
+    </ul>
+  </aside>
+  
+  <!-- MAIN: Dashboard principal donde se mostrarán los proyectos y demás contenido dinámico -->
+  <main class="dashboard">
+    <!-- Sección para mostrar algunas tarjetas de proyectos, gráficos y estadísticas -->
+    <section class="projects-section">
+      <h2>Mis Proyectos Recientes</h2>
+      <!-- Contenedor de Project Cards -->
+      <div id="project-cards" class="cards-container">
+        <!-- Las tarjetas se insertarán dinámicamente mediante JavaScript -->
+        <!-- Ejemplo estático:
+        <div class="project-card">
+          <h3>Proyecto Alpha</h3>
+          <p>Descripción breve del proyecto.</p>
+          <small>Creado el: 01/02/2025</small>
+        </div>
+        -->
+      </div>
+    </section>
+    
+    <!-- Sección para paneles o dashboards adicionales -->
+    <section class="stats-section">
+      <h2>Estadísticas y Actividades</h2>
+      <div class="stats-dashboard">
+        <!-- Aquí irán gráficos y métricas (puedes utilizar bibliotecas como Chart.js o D3.js) -->
+        <p>Indicadores de actividades en los proyectos.</p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./js/ui.js"></script>
+  <script type="module" src="./js/home.js"></script>
+  <script type="module" src="./js/projects.js"></script>
 </body>
 </html>

@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error al iniciar sesión:", error);
         let errorMessage = "";
         if (error.code === "auth/wrong-password" || error.code === "auth/invalid-login-credentials") {
-          errorMessage = "La contraseña es incorrecta. Por favor, inténtalo nuevamente.";
+          errorMessage = "El correo o contraseña es incorrecto.";
         }
         else if (error.code === "auth/network-request-failed" || !navigator.onLine) {
           errorMessage = "No tienes conexión a Internet. Por favor, verifica tu red e inténtalo nuevamente.";
