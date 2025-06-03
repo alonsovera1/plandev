@@ -6,64 +6,65 @@
   <title>PlanDev - Espacio de Trabajo</title>
   <link rel="stylesheet" href="./css/home.css">
   <!-- incluir iconos o fuentes, por ejemplo Font Awesome si lo requieres -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-left">
-      <!-- Logo clickable (redirige a home) -->
-      <div class="logo" onclick="window.location.href='home.html'">
-        PlanDev
-      </div>
-      <!-- Menú de navegación -->
-      <nav class="nav-menu">
-        <!-- Los enlaces pueden tener atributos data-route para ser gestionados por el router SPA -->
-        <a href="#home" data-route="home">Inicio</a>
-        <a href="#teams" data-route="teams">Equipos</a>
-        <a href="#projects" data-route="projects">Proyectos</a>
-      </nav>
-    </div>
-    
-    <div class="header-right">
-      <!-- Botón para crear nuevo proyecto -->
-      <button id="btn-create" title="Crear nuevo proyecto">+</button>
-      
-      <!-- Ícono de Notificaciones con contador -->
-      <div class="icon notif-icon" title="Notificaciones">
-        <span class="notif-count">2</span>
-        <!-- Puedes utilizar un SVG o FontAwesome aquí -->
-        <!-- <i class="fas fa-bell"></i> -->
-      </div>
-      
-      <!-- Ícono de Ayuda -->
-      <div class="icon help-icon" title="Ayuda">
-        <!-- Ejemplo con texto o icono -->
-        ?
-      </div>
-      
-      <!-- Perfil del usuario: muestra la inicial, al hacer click despliega el menú -->
-      <div class="profile-dropdown">
-        <div class="profile-icon" title="Perfil">
-          A <!-- Se mostrará la inicial del nombre del usuario -->
+    <header class="main-header">
+        <div class="header-left">
+            <!-- Logo clickable (redirige a home) -->
+            <div class="logo" onclick="window.location.href='home.html'">
+                PlanDev
+            </div>
+            <!-- Menú de navegación -->
+            <nav class="nav-menu">
+                <!-- Los enlaces pueden tener atributos data-route para ser gestionados por el router SPA -->
+                <a href="#home" data-route="home">Inicio</a>
+                <a href="#teams" data-route="teams">Equipos</a>
+                <a href="#projects" data-route="projects">Proyectos</a>
+            </nav>
         </div>
-        <!-- Menú desplegable del perfil -->
-        <div class="dropdown-menu">
-          <a href="#profile" data-route="profile">Información de perfil</a>
-          <a href="#settings" data-route="settings">Configuración</a>
-          <a href="javascript:void(0)" id="logoutBtn">Cerrar sesión</a>
-
+        
+        <div class="header-right">
+            <button id="btn-create" title="Crear nuevo proyecto">+</button>
+            <div class="icon notif-icon" title="Notificaciones">
+                <span class="notif-count">2</span>
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="icon help-icon" title="Ayuda">
+                <!-- Ejemplo con texto o icono -->
+                ?
+            </div>
+            
+            <div class="profile-dropdown">
+                <div class="profile-icon" title="Perfil">
+                    A
+                </div>
+                <div class="dropdown-menu">
+                    <div class="user-info">
+                        <!-- <i class="fas fa-envelope"></i> -->
+                        <span class="user-email"></span>
+                    </div>
+                    <hr>
+                    <a href="#profile" data-route="profile"><i class="fas fa-user"></i> Información de perfil</a>
+                    <a href="#settings" data-route="settings"><i class="fas fa-cog"></i> Configuración</a>
+                    <a href="javascript:void(0)" id="modeToggle"><i class="fas fa-adjust"></i> Modo oscuro/claro</a>
+                    <a href="javascript:void(0)" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                </div>
+            <div>
         </div>
-      </div>
-    </div>
   </header>
   
   <!-- ASIDE: Barra lateral izquierda con herramientas -->
   <aside class="side-tools">
+    <!-- Botón para contraer/expandir el aside -->
+    <button id="asideToggle" class="aside-toggle" title="Contraer/Expandir">
+        <i class="fas fa-angle-double-left"></i>
+    </button>
     <ul>
       <li>
         <button id="btn-chat" title="Chat">
           Chat
-          <!-- Puedes incluir un icono aquí -->
+          <!-- incluir un icono aquí -->
         </button>
       </li>
       <li>
@@ -76,7 +77,7 @@
           Invitar Miembros
         </button>
       </li>
-      <!-- Agrega más botones/herramientas según la funcionalidad necesaria -->
+      <!-- Agregar más botones/herramientas según la funcionalidad necesaria -->
     </ul>
   </aside>
   

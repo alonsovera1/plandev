@@ -137,16 +137,21 @@ header.main-header {
   background-color: #357ABD;
 }
 
+
 .dropdown-menu {
   display: none;
   position: absolute;
   right: 0;
-  top: 45px;
+  top: 55px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border-radius: 4px;
-  width: 180px;
+  width: 220px;
   z-index: 10;
+}
+
+.dropdown-menu.active {
+  display: block;
 }
 
 .dropdown-menu a {
@@ -159,17 +164,33 @@ header.main-header {
   transition: background-color 0.3s ease;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+}
+
+.user-info i {
+  font-size: 18px;
+}
+
+.user-email {
+  flex-grow: 1;
+  word-break: break-word;
+  text-align: left;
+}
+
+
 .dropdown-menu a:last-child {
   border-bottom: none;
 }
 
 .dropdown-menu a:hover {
   background-color: #f1f1f1;
-}
-
-/* Muestra el dropdown al pasar el mouse */
-.profile-dropdown:hover .dropdown-menu {
-  display: block;
 }
 
 /* Aside Styles (side-tools) */
@@ -183,6 +204,40 @@ header.main-header {
   padding: 20px;
   overflow-y: auto;
   border-right: 1px solid #ddd;
+  transition: width 0.3s ease;
+}
+
+/* Botón toggle dentro del aside */
+.aside-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estado contraído del aside */
+.side-tools.collapsed {
+  width: 120px; /* Un ancho menor para el estado contraído */
+}
+
+
+/*ocultar el contenido textual o ajustar el layout al contraerse */
+.side-tools.collapsed ul {
+  font-size: small; 
+}
+
+/*dejar los elementos pero forzar un display especial, podrías hacer */
+.side-tools.collapsed ul li button {
+  padding: 10px 0;
+}
+
+/* mostrar íconos en los botones */
+.side-tools.collapsed ul li button i {
+  font-size: 20px;
 }
 
 .side-tools ul {
@@ -321,4 +376,34 @@ header.main-header {
     margin-left: 0;
     padding-top: 120px;
   }
+}
+
+
+
+/* Ejemplo simple de estilos para dark mode */
+body.dark-mode {
+  background-color: #222;
+  color: #ddd;
+}
+
+body.dark-mode header.main-header {
+  background-color: #333;
+  border-bottom: 1px solid #555;
+}
+
+body.dark-mode .nav-menu a {
+  color: #ddd;
+}
+
+body.dark-mode .dropdown-menu {
+  background-color: #333;
+  color: #ddd;
+}
+
+body.dark-mode .dropdown-menu a {
+  color: #ddd;
+}
+
+body.dark-mode .dropdown-menu a:hover {
+  background-color: #444;
 }

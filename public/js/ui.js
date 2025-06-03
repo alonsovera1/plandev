@@ -36,10 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/* Navegación SPA mediante hash routing */
+/* Navegación SPA mediante hash routing (home)*/
 
-
-// ui.js
 document.addEventListener("DOMContentLoaded", () => {
   // Determinar la ruta por defecto según el archivo actual
   let defaultRoute = "index";
@@ -75,3 +73,48 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
+// Contraer el aside de home
+
+export function initHome() {
+  console.log("Inicializando la vista Home...");
+
+  // Configurar el botón de cerrar sesión
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (confirm("¿Estás seguro de cerrar sesión?")) {
+        logoutUser()
+          .then(() => {
+            window.location.href = "index.html";
+          })
+          .catch(err => {
+            console.error("Error al cerrar sesión:", err);
+            alert("No se pudo cerrar la sesión. Intenta nuevamente.");
+          });
+      }
+    });
+  }
+
+}
+
+//   // Abrir y cerrar el menú de perfil con clic
+// document.addEventListener("DOMContentLoaded", () => {
+//   const profileIcon = document.querySelector('.profile-icon');
+//   const dropdownMenu = document.querySelector('.dropdown-menu');
+
+//   if (profileIcon && dropdownMenu) {
+//     profileIcon.addEventListener('click', (e) => {
+//       e.stopPropagation();
+//       dropdownMenu.classList.toggle('active');
+//     });
+
+//     document.addEventListener('click', (e) => {
+//       if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+//         dropdownMenu.classList.remove('active');
+//       }
+//     });
+//   }
+// });
