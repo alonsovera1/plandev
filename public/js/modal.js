@@ -47,7 +47,6 @@ window.addEventListener('click', function(event) {
 
 
 // Modal de inicio de sesion
-
 const loginModal = document.getElementById('loginModal');
 const openLoginBtns = document.querySelectorAll('.open-login-modal');
 const closeLoginBtn = loginModal ? loginModal.getElementsByClassName('close')[0] : null;

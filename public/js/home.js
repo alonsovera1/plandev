@@ -44,6 +44,7 @@ export function initHome() {
     }
   });
 
+
   // Lógica para abrir y cerrar el menú de perfil con clic
   const profileIcon = document.querySelector('.profile-icon');
   const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -73,6 +74,63 @@ export function initHome() {
       }
     });
   }
+
+  
+    // Crear un nuevo proyecto
+    const createProjectBtn = document.getElementById("btn-create-project");
+    if (createProjectBtn) {
+    createProjectBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        startProjectCreationFlow();
+    });
+    }
+
+    // Función que inicia el flujo de creación de proyecto
+    function startProjectCreationFlow() {
+    console.log("Iniciando flujo de creación de proyecto...");
+    // Aquí se puede ocultar el dashboard actual y mostrar el panel de selección de metodología,
+    // o iniciar la lógica que guíe al usuario por el proceso.
+    alert("Flujo de creación de proyecto iniciado.");
+    }
+
+    // Boton Equipos
+    const teamsBtn = document.getElementById("btn-teams");
+    if (teamsBtn) {
+    teamsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Lógica para redirigir o mostrar la vista de Equipos
+        alert("Vista Equipos");
+    });
+
+    // Boton Sugerencias
+    const feedbackBtn = document.getElementById("btn-feedback");
+    if (feedbackBtn) {
+    feedbackBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Lógica para abrir un formulario modal de sugerencias o feedback
+        alert("Formulario de sugerencias se abriría aquí.");
+    });
+    }
+
+}
+    // Retraer panel
+    const asideCollapseBtn = document.getElementById("asideCollapse");
+    const sideTools = document.querySelector(".side-tools");
+    if (asideCollapseBtn && sideTools) {
+    asideCollapseBtn.addEventListener("click", () => {
+        sideTools.classList.toggle("collapsed");
+        // Cambiar el ícono según el estado
+        if (sideTools.classList.contains("collapsed")) {
+        asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-right"></i>`;
+        // Opcional: ajustar el ancho del panel – puede hacerse con CSS
+        } else {
+        asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-left"></i>`;
+        }
+    });
+    }
+
+
+
 }
 
 // Función que extrae las iniciales del email
@@ -86,4 +144,19 @@ function getInitialsFromEmail(email) {
     }
   });
   return initials;
+}
+
+
+
+// Función que inicia el flujo de creación de un proyecto
+function startProjectCreationFlow() {
+  console.log("Iniciando flujo de creación de proyecto...");
+  // Supongamos que el flujo implica ocultar la sección de proyectos y mostrar el panel de metodologías.
+  const projectsSection = document.getElementById("projectsSection");
+  const createProjectPanel = document.getElementById("createProjectPanel");
+  if (projectsSection && createProjectPanel) {
+    projectsSection.style.display = "none";
+    createProjectPanel.style.display = "block";
+  }
+  // Aquí continuar con la lógica para filtrar y seleccionar la metodología.
 }

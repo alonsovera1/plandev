@@ -7,7 +7,7 @@ import { db } from "./firebase-config.js";
 export async function loadProjects() {
   try {
     // Consulta todos los documentos de la colección "projects"
-    // Puedes agregar filtros en el futuro (por ejemplo, que pertenezcan al usuario actual)
+    // se pueden agregar filtros (por ejemplo, que pertenezcan al usuario actual)
     const querySnapshot = await getDocs(collection(db, "projects"));
     
     // Selecciona el contenedor donde se cargarán las tarjetas de proyectos

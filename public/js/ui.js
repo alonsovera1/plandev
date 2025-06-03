@@ -99,22 +99,3 @@ export function initHome() {
   }
 
 }
-
-//   // Abrir y cerrar el menú de perfil con clic
-// document.addEventListener("DOMContentLoaded", () => {
-//   const profileIcon = document.querySelector('.profile-icon');
-//   const dropdownMenu = document.querySelector('.dropdown-menu');
-
-//   if (profileIcon && dropdownMenu) {
-//     profileIcon.addEventListener('click', (e) => {
-//       e.stopPropagation();
-//       dropdownMenu.classList.toggle('active');
-//     });
-
-//     document.addEventListener('click', (e) => {
-//       if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-//         dropdownMenu.classList.remove('active');
-//       }
-//     });
-//   }
-// });

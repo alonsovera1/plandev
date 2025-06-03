@@ -5,111 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PlanDev - Espacio de Trabajo</title>
   <link rel="stylesheet" href="./css/home.css">
-  <!-- incluir iconos o fuentes, por ejemplo Font Awesome si lo requieres -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="main-header">
         <div class="header-left">
-            <!-- Logo clickable (redirige a home) -->
-            <div class="logo" onclick="window.location.href='home.html'">
-                PlanDev
-            </div>
-            <!-- Menú de navegación -->
+            <div class="logo" onclick="window.location.href='home.html'">PlanDev</div>
             <nav class="nav-menu">
-                <!-- Los enlaces pueden tener atributos data-route para ser gestionados por el router SPA -->
-                <a href="#home" data-route="home">Inicio</a>
-                <a href="#teams" data-route="teams">Equipos</a>
-                <a href="#projects" data-route="projects">Proyectos</a>
+            <a href="#home" data-route="home">Inicio</a>
             </nav>
         </div>
-        
         <div class="header-right">
-            <button id="btn-create" title="Crear nuevo proyecto">+</button>
-            <div class="icon notif-icon" title="Notificaciones">
+            <div class="notif-icon" title="Notificaciones">
                 <span class="notif-count">2</span>
                 <i class="fas fa-bell"></i>
             </div>
-            <div class="icon help-icon" title="Ayuda">
-                <!-- Ejemplo con texto o icono -->
-                ?
+            <div class="help-icon" title="Ayuda">
+                <i class="fas fa-question-circle"></i>
             </div>
-            
             <div class="profile-dropdown">
-                <div class="profile-icon" title="Perfil">
-                    A
-                </div>
+                <div class="profile-icon" title="Perfil">A</div>
                 <div class="dropdown-menu">
                     <div class="user-info">
-                        <!-- <i class="fas fa-envelope"></i> -->
+                        <i class="fas fa-envelope"></i>
                         <span class="user-email"></span>
                     </div>
                     <hr>
                     <a href="#profile" data-route="profile"><i class="fas fa-user"></i> Información de perfil</a>
+                    <a href="javascript:void(0)" id="modeToggle"><i class="fas fa-moon"></i> Modo oscuro</a>
                     <a href="#settings" data-route="settings"><i class="fas fa-cog"></i> Configuración</a>
-                    <a href="javascript:void(0)" id="modeToggle"><i class="fas fa-adjust"></i> Modo oscuro/claro</a>
                     <a href="javascript:void(0)" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                 </div>
-            <div>
+            </div>
         </div>
-  </header>
-  
-  <!-- ASIDE: Barra lateral izquierda con herramientas -->
-  <aside class="side-tools">
-    <!-- Botón para contraer/expandir el aside -->
-    <button id="asideToggle" class="aside-toggle" title="Contraer/Expandir">
-        <i class="fas fa-angle-double-left"></i>
-    </button>
-    <ul>
-      <li>
-        <button id="btn-chat" title="Chat">
-          Chat
-          <!-- incluir un icono aquí -->
-        </button>
-      </li>
-      <li>
-        <button id="btn-calendar" title="Calendario">
-          Calendario
-        </button>
-      </li>
-      <li>
-        <button id="btn-invite" title="Invitar miembros">
-          Invitar Miembros
-        </button>
-      </li>
-      <!-- Agregar más botones/herramientas según la funcionalidad necesaria -->
-    </ul>
-  </aside>
-  
-  <!-- MAIN: Dashboard principal donde se mostrarán los proyectos y demás contenido dinámico -->
-  <main class="dashboard">
-    <!-- Sección para mostrar algunas tarjetas de proyectos, gráficos y estadísticas -->
-    <section class="projects-section">
-      <h2>Mis Proyectos Recientes</h2>
-      <!-- Contenedor de Project Cards -->
-      <div id="project-cards" class="cards-container">
-        <!-- Las tarjetas se insertarán dinámicamente mediante JavaScript -->
-        <!-- Ejemplo estático:
-        <div class="project-card">
-          <h3>Proyecto Alpha</h3>
-          <p>Descripción breve del proyecto.</p>
-          <small>Creado el: 01/02/2025</small>
-        </div>
-        -->
-      </div>
-    </section>
+        </header>
+        
+        <!-- Panel lateral -->
+        <aside class="side-tools">
+            <button id="asideCollapse" class="aside-collapse" title="Contraer panel">
+                <i class="fas fa-angle-double-left"></i>
+            </button>
+            
+            <!-- Botones principales -->
+            <div class="side-buttons">
+                <button id="btn-create-project" title="Crear un proyecto">
+                <i class="fas fa-plus-circle"></i>
+                <span>Crear un proyecto</span>
+                </button>
+                <button id="btn-teams" title="Equipos">
+                <i class="fas fa-users"></i>
+                <span>Equipos</span>
+                </button>
+            </div>
+            
+            <div class="botton-feedback">
+                <button id="btn-feedback" title="Sugerencias">
+                <i class="fas fa-comment-dots"></i>
+                <span>Sugerencias</span>
+                </button>
+            </div>
+        </aside>
+
+
     
-    <!-- Sección para paneles o dashboards adicionales -->
-    <section class="stats-section">
-      <h2>Estadísticas y Actividades</h2>
-      <div class="stats-dashboard">
-        <!-- Aquí irán gráficos y métricas (puedes utilizar bibliotecas como Chart.js o D3.js) -->
-        <p>Indicadores de actividades en los proyectos.</p>
-      </div>
-    </section>
-  </main>
-  <script type="module" src="./js/ui.js"></script>
-  <script type="module" src="./js/home.js"></script>
-  <script type="module" src="./js/projects.js"></script>
+    <!-- MAIN: Dashboard principal donde se mostrarán los proyectos y demás contenido dinámico -->
+    <main class="dashboard">
+            <!-- Bloque de creación de proyecto: se muestra al pulsar "Crear nuevo proyecto" -->
+            <section class="create-project-panel" id="createProjectPanel" style="display: none;">
+                <h2>Selecciona una metodología de desarrollo</h2>
+                <div class="filter-bar">
+                <button id="filterBtn">Filtrar</button>
+                <!-- Opcional: algún control para ordenar -->
+                </div>
+                <!-- Lista de metodologías: separadas en dos grupos -->
+                <div class="methodologies">
+                <div class="methodology-group">
+                    <h3>Metodologías Ágiles</h3>
+                    <div class="methodology-list">
+                    <!-- Cada caja será generada dinámicamente o formateada con HTML -->
+                    <div class="methodology-card">
+                        <p>Scrum</p>
+                        <button class="select-methodology">Seleccionar</button>
+                    </div>
+                    <div class="methodology-card">
+                        <p>Kanban</p>
+                        <button class="select-methodology">Seleccionar</button>
+                    </div>
+                    <!-- Más metodologías ágiles -->
+                    </div>
+                </div>
+                <div class="methodology-group">
+                    <h3>Metodologías Tradicionales</h3>
+                    <div class="methodology-list">
+                    <div class="methodology-card">
+                        <p>Cascada</p>
+                        <button class="select-methodology">Seleccionar</button>
+                    </div>
+                    <div class="methodology-card">
+                        <p>Modelo en V</p>
+                        <button class="select-methodology">Seleccionar</button>
+                    </div>
+                    <!-- Más tradicionales -->
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <!-- Por defecto, muestra los Proyectos Recientes -->
+            <section class="projects-section" id="projectsSection">
+                <h2>Mis Proyectos Recientes</h2>
+                <div id="project-cards" class="cards-container">
+                <!-- Tarjetas de proyectos se insertarán aquí -->
+                </div>
+            </section>
+            
+        </main>
+
+    <script type="module" src="./js/ui.js"></script>
+    <script type="module" src="./js/home.js"></script>
+    <script type="module" src="./js/projects.js"></script>
 </body>
 </html>
