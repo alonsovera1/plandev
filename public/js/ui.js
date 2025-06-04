@@ -49,15 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadView(view) {
     switch (view) {
       case "home":
-        import("./home.js")
-          .then(module => module.initHome())
-          .catch(e => console.error("Error al cargar el módulo Home:", e));
-        break;
-      // Agrega más casos según las vistas a manejar
+        import("./home.js").then((module) => {
+          document.addEventListener("DOMContentLoaded", module.initHome); 
+        }).catch(e => console.error("Error al cargar el módulo Home:", e));
+      break;
+
+      // Agregar más casos según las vistas a manejar
       case "index":
       default:
         console.log("Cargando vista Index (landing)...");
-        // Aquí se puede cargar la lógica para la landing, o simplemente dejarlo vacío.
+        // Aquí se puede cargar la lógica para la landing, o dejarlo vacío.
         break;
     }
   }
@@ -73,29 +74,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-// Contraer el aside de home
-
-export function initHome() {
-  console.log("Inicializando la vista Home...");
-
-  // Configurar el botón de cerrar sesión
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (confirm("¿Estás seguro de cerrar sesión?")) {
-        logoutUser()
-          .then(() => {
-            window.location.href = "index.html";
-          })
-          .catch(err => {
-            console.error("Error al cerrar sesión:", err);
-            alert("No se pudo cerrar la sesión. Intenta nuevamente.");
-          });
-      }
-    });
-  }
-
-}

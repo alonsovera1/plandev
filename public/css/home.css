@@ -88,8 +88,8 @@ header.main-header {
 /* Contador de notificaciones */
 .notif-count {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -8px;
+  right: -8px;
   background-color: #e74c3c;
   color: #fff;
   width: 18px;
@@ -218,7 +218,7 @@ header.main-header {
   left: 0;
   width: 250px;
   height: calc(100vh - 70px);
-  background-color: rgba(247, 247, 247, 0.95);
+  background-color: rgba(236, 233, 233, 0.95);
   border-right: 1px solid #ddd;
   padding: 10px 5px;
   display: flex;
@@ -241,6 +241,18 @@ header.main-header {
 .side-tools.collapsed {
   width: 60px;
 }
+
+.side-tools.collapsed .side-buttons button span,
+.side-tools.collapsed .botton-feedback button span {
+  display: none;
+}
+
+.side-tools.collapsed .side-buttons button,
+.side-tools.collapsed .botton-feedback button {
+  padding: 10px;
+  justify-content: center;
+}
+
 
 /* Contenedor de botones principales */
 .side-buttons {
@@ -285,15 +297,97 @@ header.main-header {
 }
 
 
-/* Main Dashboard */
+
+
+/* =============
+Main Dashboard 
+================ */
+
 .dashboard {
-  margin-left: 270px; /* Ancho del aside + margen */
-  padding: 90px 20px 20px; /* Espacio arriba para el header fijo */
-  background: #fcfcfc;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Centra horizontalmente el contenido */
+  justify-content: center;
+  padding: 30px 20px 20px; /* Espacio para el header y márgenes internos */
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  margin: 90px auto 20px;   /* Se centra horizontalmente */
+  width: calc(100% - 270px);/* Ancho disponible cuando el aside está visible */
 }
 
-/* Projects Section */
+/* Cuando el aside se colapse u oculte (definición en JS o mediante clase en body) */
+body.aside-collapsed .dashboard,
+body.aside-hidden .dashboard {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Estado vacío del dashboard */
+#empty-dashboard {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#empty-dashboard p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Etiqueta de ayuda */
+#empty-dashboard p.help-text {
+  margin-top: 60px;  /* Lo posiciona más abajo */
+  font-size: 18px;
+  color: #555;
+}
+
+/* Botón animado "Guía de inicio" */
+.animated-guide-btn {
+  display: block;
+  margin: 40px auto 20px auto;  /* Se coloca más abajo (40px de margen superior) y centrado */
+  background-color: #4A90E2;
+  color: #fff;
+  border: 2px solid transparent;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Aplicar la animación de pulso/brillo */
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+  }
+}
+
+.animated-guide-btn:hover {
+  background-color: #357ABD;
+  transform: scale(1.05);
+}
+
+/* forzar a que los márgenes sean automáticos para centrar el contenedor */
+.dashboard {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+/* Seccion de proyectos*/
 .projects-section {
   margin-bottom: 40px;
 }
@@ -363,7 +457,37 @@ header.main-header {
 }
 
 
-   /* Responsive Styles */
+
+/* Controles de navegación */
+.modal-nav {
+  text-align: center;
+  margin-top: 20px;
+}
+.modal-nav button {
+  background-color: #4A90E2;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal-nav button:hover {
+  background-color: #357ABD;
+}
+.modal-nav button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+/*==================
+ Responsive Styles 
+===================*/
 @media (max-width: 1024px) {
   .side-tools {
     width: 200px;

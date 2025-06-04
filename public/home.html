@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PlanDev - Espacio de Trabajo</title>
   <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/guide.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -12,7 +13,11 @@
         <div class="header-left">
             <div class="logo" onclick="window.location.href='home.html'">PlanDev</div>
             <nav class="nav-menu">
-            <a href="#home" data-route="home">Inicio</a>
+                <a href="#home" data-route="home">Inicio</a>
+                <a href="#" data-route="">Recursos</a>
+                <a href="#" data-route="">Metodologias</a>
+                <a href="#" data-route="">Roles</a>
+                <a href="#" data-route="">Preguntas frecuentes</a>
             </nav>
         </div>
         <div class="header-right">
@@ -38,91 +43,112 @@
                 </div>
             </div>
         </div>
-        </header>
-        
-        <!-- Panel lateral -->
-        <aside class="side-tools">
-            <button id="asideCollapse" class="aside-collapse" title="Contraer panel">
-                <i class="fas fa-angle-double-left"></i>
-            </button>
-            
-            <!-- Botones principales -->
-            <div class="side-buttons">
-                <button id="btn-create-project" title="Crear un proyecto">
-                <i class="fas fa-plus-circle"></i>
-                <span>Crear un proyecto</span>
-                </button>
-                <button id="btn-teams" title="Equipos">
-                <i class="fas fa-users"></i>
-                <span>Equipos</span>
-                </button>
-            </div>
-            
-            <div class="botton-feedback">
-                <button id="btn-feedback" title="Sugerencias">
-                <i class="fas fa-comment-dots"></i>
-                <span>Sugerencias</span>
-                </button>
-            </div>
-        </aside>
-
-
+    </header>
     
+    <!-- Panel lateral -->
+    <aside class="side-tools">
+        <button id="asideCollapse" class="aside-collapse" title="Contraer panel">
+            <i class="fas fa-angle-double-left"></i>
+        </button>
+        
+        <!-- Botones principales -->
+        <div class="side-buttons">
+            <button id="btn-create-project" title="Crear un proyecto">
+            <i class="fas fa-plus-circle"></i>
+            <span>Crear un proyecto</span>
+            </button>
+            <button id="btn-teams" title="Equipos">
+            <i class="fas fa-users"></i>
+            <span>Equipos</span>
+            </button>
+        </div>
+        
+        <div class="botton-feedback">
+            <button id="btn-feedback" title="Sugerencias">
+            <i class="fas fa-comment-dots"></i>
+            <span>Sugerencias</span>
+            </button>
+        </div>
+    </aside>
+
     <!-- MAIN: Dashboard principal donde se mostrarán los proyectos y demás contenido dinámico -->
     <main class="dashboard">
-            <!-- Bloque de creación de proyecto: se muestra al pulsar "Crear nuevo proyecto" -->
-            <section class="create-project-panel" id="createProjectPanel" style="display: none;">
-                <h2>Selecciona una metodología de desarrollo</h2>
-                <div class="filter-bar">
-                <button id="filterBtn">Filtrar</button>
-                <!-- Opcional: algún control para ordenar -->
-                </div>
-                <!-- Lista de metodologías: separadas en dos grupos -->
-                <div class="methodologies">
-                <div class="methodology-group">
-                    <h3>Metodologías Ágiles</h3>
-                    <div class="methodology-list">
-                    <!-- Cada caja será generada dinámicamente o formateada con HTML -->
-                    <div class="methodology-card">
-                        <p>Scrum</p>
-                        <button class="select-methodology">Seleccionar</button>
-                    </div>
-                    <div class="methodology-card">
-                        <p>Kanban</p>
-                        <button class="select-methodology">Seleccionar</button>
-                    </div>
-                    <!-- Más metodologías ágiles -->
-                    </div>
-                </div>
-                <div class="methodology-group">
-                    <h3>Metodologías Tradicionales</h3>
-                    <div class="methodology-list">
-                    <div class="methodology-card">
-                        <p>Cascada</p>
-                        <button class="select-methodology">Seleccionar</button>
-                    </div>
-                    <div class="methodology-card">
-                        <p>Modelo en V</p>
-                        <button class="select-methodology">Seleccionar</button>
-                    </div>
-                    <!-- Más tradicionales -->
-                    </div>
-                </div>
-                </div>
-            </section>
+        <!-- Estado vacío: solo para usuarios nuevos -->
+        <section id="empty-dashboard">
+            <h2>Bienvenido a PlanDev</h2>
+            <p>Aquí podrás crear y planificar tus proyectos.</p>
+            <p class="help-text">¿Necesitas ayuda para comenzar? Usa nuestra Guía de inicio.</p>
+            <!-- Botón animado para la guía de inicio -->
+            <button id="btn-start-guide" class="animated-guide-btn">
+            Guía de inicio
+            </button>
+        </section>
 
-            <!-- Por defecto, muestra los Proyectos Recientes -->
-            <section class="projects-section" id="projectsSection">
-                <h2>Mis Proyectos Recientes</h2>
-                <div id="project-cards" class="cards-container">
-                <!-- Tarjetas de proyectos se insertarán aquí -->
-                </div>
+       <!-- Modal Guía de Inicio -->
+        <div id="guideModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <!-- Contenedor de slides -->
+            <div class="modal-slides">
+            <!-- Slide 1: Inicia el Flujo -->
+            <section class="slide active">
+                <h3>Paso 1: Inicia el Flujo de Trabajo</h3>
+                <p>Haz clic en el botón <strong>"Crear un proyecto"</strong> en el panel lateral para iniciar el proceso.</p>
+                <i class="fas fa-plus-circle"></i>
             </section>
-            
-        </main>
+            <!-- Slide 2: Selecciona una Metodología -->
+            <section class="slide">
+                <h3>Paso 2: Selecciona una Metodología</h3>
+                <p>Elige entre metodologías ágiles y tradicionales para definir el marco de trabajo de tu proyecto. Usa el filtro para explorar las opciones.</p>
+                <i class="fas fa-lightbulb"></i>
+            </section>
+            <!-- Slide 3: Asigna Roles -->
+            <section class="slide">
+                <h3>Paso 3: Asigna Roles</h3>
+                <p>Configura los roles dentro de tu equipo (ej. Analista de Negocios, Programador, etc.) para cada fase del proyecto.</p>
+                <i class="fas fa-users"></i>
+            </section>
+            <!-- Slide 4: Confirma y Crea -->
+            <section class="slide">
+                <h3>Paso 4: Confirma y Crea</h3>
+                <p>Revisa la configuración completa y confirma la creación del proyecto. ¡Estás listo para comenzar a planificar tus proyectos!</p>
+                <i class="fas fa-check-circle"></i>
+            </section>
+            <!-- Slide 5: Tips y Recursos -->
+            <section class="slide">
+                <h3>Paso 5: Tips de herramientas</h3>
+                <p>Consulta el centro de ayuda y los recursos disponibles en el menú superior para resolver cualquier duda en el camino.</p>
+                <i class="fas fa-book"></i>
+                <button class="exit-guide">Salir</button>
+            </section>
+            </div>
+            <!-- Controles de navegación -->
+            <div class="modal-nav">
+            <button id="prevSlide" disabled>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="nextSlide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            </div>
+        </div>
+    </div>
+
+        <!-- <section class="projects-section" id="projectsSection">
+            <h2>Mis Proyectos Recientes</h2>
+            <div id="project-cards" class="cards-container">
+            </div>
+        </section> -->
+
+
+
+    </main>
+
+
 
     <script type="module" src="./js/ui.js"></script>
     <script type="module" src="./js/home.js"></script>
     <script type="module" src="./js/projects.js"></script>
+    <script type="module" src="./js/guide.js"></script>
 </body>
 </html>

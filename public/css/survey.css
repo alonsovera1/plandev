@@ -17,8 +17,12 @@ header {
 header .logo {
   font-size: 32px;
   font-weight: bold;
-  color: #4A90E2;
+  color: #333;
   margin-bottom: 10px;
+}
+
+h2 {
+  color:#333
 }
 
 /* Layout principal: sidebar de progreso + área de encuesta */

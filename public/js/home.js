@@ -1,7 +1,77 @@
+/* Archivo: public/js/home.js */
+
 import { logoutUser } from "./auth.js";
 import { loadProjects } from "./projects.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
+// Función utilitaria para extraer las iniciales de un email
+function getInitialsFromEmail(email) {
+  if (!email) return "";
+  const parts = email.split('@')[0].split(/[._]/);
+  let initials = "";
+  parts.forEach((part) => {
+    if (part.length > 0) {
+      initials += part[0].toUpperCase();
+    }
+  });
+  return initials;
+}
+
+// -------------------------
+// Función para retraer/expandir el panel lateral
+// -------------------------
+function setupAsideCollapse() {
+  const asideCollapseBtn = document.getElementById("asideCollapse");
+  const sideTools = document.querySelector(".side-tools");
+
+  if (!asideCollapseBtn || !sideTools) {
+    console.error("No se encontró o el botón o el contenedor lateral");
+    return;
+  }
+
+  asideCollapseBtn.addEventListener("click", () => {
+    // Alternamos la clase "collapsed"
+    sideTools.classList.toggle("collapsed");
+
+    // Actualizamos el ícono del botón según el estado
+    if (sideTools.classList.contains("collapsed")) {
+      asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-right"></i>`;
+    } else {
+      asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-left"></i>`;
+    }
+  });
+}
+
+// -------------------------
+// Función para abrir/contraer el menú del perfil
+// -------------------------
+function setupProfileMenu() {
+  const profileIcon = document.querySelector('.profile-icon');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+
+  if (!profileIcon || !dropdownMenu) {
+    console.error("No se encontró el icono de perfil o el menú desplegable");
+    return;
+  }
+
+  profileIcon.addEventListener("click", (e) => {
+    // Cancelar la propagación para evitar que se cierre inmediatamente
+    e.stopPropagation();
+    // Alterna la clase "active"
+    dropdownMenu.classList.toggle("active");
+  });
+
+  // Cerrar el menú si se hace clic fuera
+  document.addEventListener("click", (e) => {
+    if (!dropdownMenu.contains(e.target) && !profileIcon.contains(e.target)) {
+      dropdownMenu.classList.remove("active");
+    }
+  });
+}
+
+// -------------------------
+// Función principal que inicializa la UI del Home
+// -------------------------
 export function initHome() {
   console.log("Inicializando la vista Home...");
 
@@ -23,9 +93,6 @@ export function initHome() {
     });
   }
 
-  // Cargar proyectos (u otras funcionalidades)
-  loadProjects();
-
   // Actualizar la información del perfil usando onAuthStateChanged
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
@@ -34,9 +101,9 @@ export function initHome() {
       if (userEmailElem) {
         userEmailElem.textContent = user.email;
       }
-      // Actualizar las iniciales en el icono del perfil
       const profileIcon = document.querySelector('.profile-icon');
       if (profileIcon) {
+        // Usar la función para extraer las iniciales
         profileIcon.textContent = getInitialsFromEmail(user.email);
       }
     } else {
@@ -44,20 +111,17 @@ export function initHome() {
     }
   });
 
-
-  // Lógica para abrir y cerrar el menú de perfil con clic
-  const profileIcon = document.querySelector('.profile-icon');
-  const dropdownMenu = document.querySelector('.dropdown-menu');
-  if (profileIcon && dropdownMenu) {
-    profileIcon.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('active');
-    });
-  }
-  document.addEventListener('click', (e) => {
-    if (dropdownMenu && !dropdownMenu.contains(e.target) && !profileIcon.contains(e.target)) {
-      dropdownMenu.classList.remove('active');
+  // Inicialización del dashboard
+  loadProjects().then(projectsExist => {
+    const emptyDashboard = document.getElementById('empty-dashboard');
+    if (projectsExist) {
+      emptyDashboard.style.display = 'none';
+    } else {
+      emptyDashboard.style.display = 'block';
     }
+  }).catch(err => {
+    console.error("Error al cargar proyectos: ", err);
+    document.getElementById('empty-dashboard').style.display = 'block';
   });
 
   // Lógica para cambiar al modo oscuro/claro
@@ -66,7 +130,6 @@ export function initHome() {
     modeToggle.addEventListener("click", (e) => {
       e.preventDefault();
       document.body.classList.toggle("dark-mode");
-      // Opcional: Cambiar el texto o ícono según el estado
       if (document.body.classList.contains("dark-mode")) {
         modeToggle.innerHTML = `<i class="fas fa-sun"></i> Modo claro`;
       } else {
@@ -75,88 +138,44 @@ export function initHome() {
     });
   }
 
-  
-    // Crear un nuevo proyecto
-    const createProjectBtn = document.getElementById("btn-create-project");
-    if (createProjectBtn) {
+  // Crear un nuevo proyecto
+  const createProjectBtn = document.getElementById("btn-create-project");
+  if (createProjectBtn) {
     createProjectBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        startProjectCreationFlow();
+      e.preventDefault();
+      startProjectCreationFlow();
     });
-    }
-
-    // Función que inicia el flujo de creación de proyecto
-    function startProjectCreationFlow() {
-    console.log("Iniciando flujo de creación de proyecto...");
-    // Aquí se puede ocultar el dashboard actual y mostrar el panel de selección de metodología,
-    // o iniciar la lógica que guíe al usuario por el proceso.
-    alert("Flujo de creación de proyecto iniciado.");
-    }
-
-    // Boton Equipos
-    const teamsBtn = document.getElementById("btn-teams");
-    if (teamsBtn) {
-    teamsBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        // Lógica para redirigir o mostrar la vista de Equipos
-        alert("Vista Equipos");
-    });
-
-    // Boton Sugerencias
-    const feedbackBtn = document.getElementById("btn-feedback");
-    if (feedbackBtn) {
-    feedbackBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        // Lógica para abrir un formulario modal de sugerencias o feedback
-        alert("Formulario de sugerencias se abriría aquí.");
-    });
-    }
-
-}
-    // Retraer panel
-    const asideCollapseBtn = document.getElementById("asideCollapse");
-    const sideTools = document.querySelector(".side-tools");
-    if (asideCollapseBtn && sideTools) {
-    asideCollapseBtn.addEventListener("click", () => {
-        sideTools.classList.toggle("collapsed");
-        // Cambiar el ícono según el estado
-        if (sideTools.classList.contains("collapsed")) {
-        asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-right"></i>`;
-        // Opcional: ajustar el ancho del panel – puede hacerse con CSS
-        } else {
-        asideCollapseBtn.innerHTML = `<i class="fas fa-angle-double-left"></i>`;
-        }
-    });
-    }
-
-
-
-}
-
-// Función que extrae las iniciales del email
-function getInitialsFromEmail(email) {
-  if (!email) return "";
-  const parts = email.split('@')[0].split(/[._]/);
-  let initials = "";
-  parts.forEach(part => {
-    if (part.length > 0) {
-      initials += part[0].toUpperCase();
-    }
-  });
-  return initials;
-}
-
-
-
-// Función que inicia el flujo de creación de un proyecto
-function startProjectCreationFlow() {
-  console.log("Iniciando flujo de creación de proyecto...");
-  // Supongamos que el flujo implica ocultar la sección de proyectos y mostrar el panel de metodologías.
-  const projectsSection = document.getElementById("projectsSection");
-  const createProjectPanel = document.getElementById("createProjectPanel");
-  if (projectsSection && createProjectPanel) {
-    projectsSection.style.display = "none";
-    createProjectPanel.style.display = "block";
   }
-  // Aquí continuar con la lógica para filtrar y seleccionar la metodología.
+  function startProjectCreationFlow() {
+    console.log("Iniciando flujo de creación de proyecto...");
+    const projectsSection = document.getElementById("projectsSection");
+    const createProjectPanel = document.getElementById("createProjectPanel");
+    if (projectsSection && createProjectPanel) {
+      projectsSection.style.display = "none";
+      createProjectPanel.style.display = "block";
+    }
+  }
+
+  // Botones adicionales: Equipos y Sugerencias
+  const teamsBtn = document.getElementById("btn-teams");
+  if (teamsBtn) {
+    teamsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Vista Equipos");
+    });
+  }
+  const feedbackBtn = document.getElementById("btn-feedback");
+  if (feedbackBtn) {
+    feedbackBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Formulario de sugerencias se abriría aquí.");
+    });
+  }
+
+  // Llamadas a nuestras nuevas funciones para el panel lateral y el menú de perfil
+  setupAsideCollapse();
+  setupProfileMenu();
 }
+
+// Un único listener para DOMContentLoaded
+document.addEventListener("DOMContentLoaded", initHome);

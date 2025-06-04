@@ -1,0 +1,128 @@
+/* Modal base: se oculta por defecto y se despliega al activar la guía */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  animation: slideDown 0.5s ease;
+}
+
+/* Animación para la apertura del modal */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Botón para cerrar el modal (la “X”) */
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Contenedor de slides dentro del modal */
+.modal-slides {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+/* Cada slide individual */
+.slide {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Slide activo visible */
+.slide.active {
+  display: block;
+}
+
+/* Animación para la aparición de los slides */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Controles de navegación del modal */
+.modal-nav {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-nav button {
+  background-color: #4A90E2;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-nav button:hover {
+  background-color: #357ABD;
+}
+
+.modal-nav button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilo para los íconos dentro de cada slide */
+.modal-slides i {
+  font-size: 40px;
+  margin-top: 10px;
+  color: #4A90E2;
+}
+
+/* Botón de "Salir" (exit-guide) en la última slide */
+.exit-guide {
+  margin-top: 65px;
+  font-size: 20px;;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4A90E2;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exit-guide:hover {
+  background-color: #357ABD;
+}
