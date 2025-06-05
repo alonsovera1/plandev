@@ -553,3 +553,48 @@ body.dark-mode .dropdown-menu a {
 body.dark-mode .dropdown-menu a:hover {
   background-color: #444;
 }
+
+
+
+/* Estilos en la creacion de un nuevo proyecto */
+#projectCreationContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#projectCreationContainer input {
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#projectCreationContainer button {
+  background-color: #4A90E2;
+  color: #fff;
+  border: none;
+  margin: 10px 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#projectCreationContainer button:hover {
+  background-color: #357ABD;
+}
+
+.methodology-btn, .role-btn {
+  display: inline-block;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.methodology-btn:hover, .role-btn:hover {
+  background-color: #357ABD;
+}

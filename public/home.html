@@ -54,12 +54,12 @@
         <!-- Botones principales -->
         <div class="side-buttons">
             <button id="btn-create-project" title="Crear un proyecto">
-            <i class="fas fa-plus-circle"></i>
-            <span>Crear un proyecto</span>
+                <i class="fas fa-plus-circle"></i>
+                <span>Crear un proyecto</span>
             </button>
             <button id="btn-teams" title="Equipos">
-            <i class="fas fa-users"></i>
-            <span>Equipos</span>
+                <i class="fas fa-users"></i>
+                <span>Equipos</span>
             </button>
         </div>
         
@@ -80,59 +80,87 @@
             <p class="help-text">¿Necesitas ayuda para comenzar? Usa nuestra Guía de inicio.</p>
             <!-- Botón animado para la guía de inicio -->
             <button id="btn-start-guide" class="animated-guide-btn">
-            Guía de inicio
+                Guía de inicio
             </button>
         </section>
 
        <!-- Modal Guía de Inicio -->
         <div id="guideModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <!-- Contenedor de slides -->
-            <div class="modal-slides">
-            <!-- Slide 1: Inicia el Flujo -->
-            <section class="slide active">
-                <h3>Paso 1: Inicia el Flujo de Trabajo</h3>
-                <p>Haz clic en el botón <strong>"Crear un proyecto"</strong> en el panel lateral para iniciar el proceso.</p>
-                <i class="fas fa-plus-circle"></i>
-            </section>
-            <!-- Slide 2: Selecciona una Metodología -->
-            <section class="slide">
-                <h3>Paso 2: Selecciona una Metodología</h3>
-                <p>Elige entre metodologías ágiles y tradicionales para definir el marco de trabajo de tu proyecto. Usa el filtro para explorar las opciones.</p>
-                <i class="fas fa-lightbulb"></i>
-            </section>
-            <!-- Slide 3: Asigna Roles -->
-            <section class="slide">
-                <h3>Paso 3: Asigna Roles</h3>
-                <p>Configura los roles dentro de tu equipo (ej. Analista de Negocios, Programador, etc.) para cada fase del proyecto.</p>
-                <i class="fas fa-users"></i>
-            </section>
-            <!-- Slide 4: Confirma y Crea -->
-            <section class="slide">
-                <h3>Paso 4: Confirma y Crea</h3>
-                <p>Revisa la configuración completa y confirma la creación del proyecto. ¡Estás listo para comenzar a planificar tus proyectos!</p>
-                <i class="fas fa-check-circle"></i>
-            </section>
-            <!-- Slide 5: Tips y Recursos -->
-            <section class="slide">
-                <h3>Paso 5: Tips de herramientas</h3>
-                <p>Consulta el centro de ayuda y los recursos disponibles en el menú superior para resolver cualquier duda en el camino.</p>
-                <i class="fas fa-book"></i>
-                <button class="exit-guide">Salir</button>
-            </section>
-            </div>
-            <!-- Controles de navegación -->
-            <div class="modal-nav">
-            <button id="prevSlide" disabled>
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button id="nextSlide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <!-- Contenedor de slides -->
+                <div class="modal-slides">
+                    <!-- Slide 1: Inicia el Flujo -->
+                    <section class="slide active">
+                        <h3>Paso 1: Inicia el Flujo de Trabajo</h3>
+                        <p>Haz clic en el botón <strong>"Crear un proyecto"</strong> en el panel lateral para iniciar el proceso.</p>
+                        <i class="fas fa-plus-circle"></i>
+                    </section>
+                    <!-- Slide 2: Selecciona una Metodología -->
+                    <section class="slide">
+                        <h3>Paso 2: Selecciona una Metodología</h3>
+                        <p>Elige entre metodologías ágiles y tradicionales para definir el marco de trabajo de tu proyecto. Usa el filtro para explorar las opciones.</p>
+                        <i class="fas fa-lightbulb"></i>
+                    </section>
+                    <!-- Slide 3: Asigna Roles -->
+                    <section class="slide">
+                        <h3>Paso 3: Asigna Roles</h3>
+                        <p>Configura los roles dentro de tu equipo (ej. Analista de Negocios, Programador, etc.) para cada fase del proyecto.</p>
+                        <i class="fas fa-users"></i>
+                    </section>
+                    <!-- Slide 4: Confirma y Crea -->
+                    <section class="slide">
+                        <h3>Paso 4: Confirma y Crea</h3>
+                        <p>Revisa la configuración completa y confirma la creación del proyecto. ¡Estás listo para comenzar a planificar tus proyectos!</p>
+                        <i class="fas fa-check-circle"></i>
+                    </section>
+                    <!-- Slide 5: Tips y Recursos -->
+                    <section class="slide">
+                        <h3>Paso 5: Tips de herramientas</h3>
+                        <p>Consulta el centro de ayuda y los recursos disponibles en el menú superior para resolver cualquier duda en el camino.</p>
+                        <i class="fas fa-book"></i>
+                        <button class="exit-guide">Salir</button>
+                    </section>
+                </div>
+                <!-- Controles de navegación -->
+                <div class="modal-nav">
+                    <button id="prevSlide" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextSlide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+
+
+        <!-- Creacion de un nuevo proyecto -->
+        
+        <!-- Sección de creación de proyecto (oculta por defecto) -->
+         <section id="projectCreationContainer" style="display:none;">
+            <section id="projectCreationSection" style="display: none;">
+                <h2>Agrega un nuevo proyecto</h2>
+                <label for="projectName">Nombre del proyecto:</label>
+                <input type="text" id="projectName" placeholder="Escribe el nombre del proyecto...">
+                <button id="nextStepMethodology">Siguiente</button>
+            </section>
+
+            <!-- Sección de metodologías (oculta por defecto) -->
+            <section id="methodologiesSection" style="display: none;">
+                <h2>Selecciona una metodología</h2>
+                <div id="methodologyList"></div>
+                <button id="nextStepRoles" style="display: none;">Siguiente</button>
+            </section>
+
+            <!-- Sección de roles (oculta por defecto) -->
+            <section id="rolesSection" style="display: none;">
+                <h2>Selecciona un rol</h2>
+                <div id="rolesList"></div>
+                <button id="createProjectFinal">Finalizar</button>
+            </section>
+        </section>
+
 
         <!-- <section class="projects-section" id="projectsSection">
             <h2>Mis Proyectos Recientes</h2>
