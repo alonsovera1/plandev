@@ -1,4 +1,4 @@
-/* Lógica de la interfaz (index.html) */
+/* Archivo: public/js/ui.js */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Menú de hamburguesa
@@ -33,11 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
-
-/* Navegación SPA mediante hash routing (home)*/
-
+/* Navegación SPA mediante hash routing (home) */
 document.addEventListener("DOMContentLoaded", () => {
   // Determinar la ruta por defecto según el archivo actual
   let defaultRoute = "index";
@@ -50,15 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     switch (view) {
       case "home":
         import("./home.js").then((module) => {
-          document.addEventListener("DOMContentLoaded", module.initHome); 
+          module.initHome();
         }).catch(e => console.error("Error al cargar el módulo Home:", e));
-      break;
-
-      // Agregar más casos según las vistas a manejar
+        break;
       case "index":
       default:
         console.log("Cargando vista Index (landing)...");
-        // Aquí se puede cargar la lógica para la landing, o dejarlo vacío.
         break;
     }
   }
@@ -73,4 +66,3 @@ document.addEventListener("DOMContentLoaded", () => {
     loadView(newRoute);
   });
 });
-

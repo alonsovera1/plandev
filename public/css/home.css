@@ -227,32 +227,6 @@ header.main-header {
   transition: width 0.3s ease;
 }
 
-/* Botón de retracción del panel */
-.aside-collapse {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  align-self: flex-end;
-  margin-bottom: 15px;
-}
-
-/* Retraer panel */
-.side-tools.collapsed {
-  width: 60px;
-}
-
-.side-tools.collapsed .side-buttons button span,
-.side-tools.collapsed .botton-feedback button span {
-  display: none;
-}
-
-.side-tools.collapsed .side-buttons button,
-.side-tools.collapsed .botton-feedback button {
-  padding: 10px;
-  justify-content: center;
-}
-
 
 /* Contenedor de botones principales */
 .side-buttons {
@@ -314,13 +288,6 @@ Main Dashboard
   width: calc(100% - 270px);/* Ancho disponible cuando el aside está visible */
 }
 
-/* Cuando el aside se colapse u oculte (definición en JS o mediante clase en body) */
-body.aside-collapsed .dashboard,
-body.aside-hidden .dashboard {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
 
 /* Estado vacío del dashboard */
 #empty-dashboard {
@@ -377,13 +344,12 @@ body.aside-hidden .dashboard {
   transform: scale(1.05);
 }
 
-/* forzar a que los márgenes sean automáticos para centrar el contenedor */
+
 .dashboard {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 250px; /* Ajusta el margen izquierdo según el ancho del aside */
+  padding: 20px;
+  width: calc(100% - 250px); /* Para que no se desplace hacia la izquierda */
 }
-
-
 
 
 

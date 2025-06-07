@@ -1,43 +1,55 @@
-// cargar y mostrar los proyectos en el dashboard principal
-//  Lógica para funcionalidades CRUD y actualización de proyectos
+/* Archivo: public/js/projects.js */
 
-import { getDocs, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { db } from "./firebase-config.js";
+import { methodologies } from "./methodologies.js";
+
+const projectsContainer = document.getElementById("projectsContainer");
+
+if (!projectsContainer) {
+  console.error("Error: No se encontró el elemento projectsContainer en el DOM.");
+  // En lugar de return, podrías lanzar un error opcionalmente:
+  // throw new Error("No se encontró el elemento projectsContainer en el DOM.");
+} else {
+  projectsContainer.innerHTML = ""; // Limpiar antes de agregar proyectos
+}
+
+
+projectsContainer.innerHTML = ""; // Limpiar antes de agregar proyectos
 
 export async function loadProjects() {
-  try {
-    // Consulta todos los documentos de la colección "projects"
-    // se pueden agregar filtros (por ejemplo, que pertenezcan al usuario actual)
-    const querySnapshot = await getDocs(collection(db, "projects"));
-    
-    // Selecciona el contenedor donde se cargarán las tarjetas de proyectos
-    const cardsContainer = document.getElementById("project-cards");
-    if (cardsContainer) {
-      cardsContainer.innerHTML = ""; // Limpiar el contenido previo
+  const auth = getAuth();
 
-      querySnapshot.forEach((docSnap) => {
-        const project = docSnap.data();
-        // Crear elemento de la tarjeta del proyecto
-        const card = document.createElement("div");
-        card.classList.add("project-card");
-        card.innerHTML = `
-          <h3>${project.name}</h3>
-          <p>${project.description ? project.description : ""}</p>
-          <small>Creado el: ${new Date(project.createdAt.seconds * 1000).toLocaleDateString()}</small>
-        `;
-
-        // Agregar un event listener para navegar a la vista de detalles del proyecto
-        card.addEventListener("click", () => {
-          // Ejemplo: redirigir a la página de detalles del proyecto
-          window.location.href = `/project/${docSnap.id}`;
-        });
-
-        // Agregar la tarjeta al contenedor
-        cardsContainer.appendChild(card);
-      });
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      console.error("Error: Usuario no autenticado.");
+      return;
     }
-  } catch (error) {
-    console.error("Error al cargar proyectos:", error);
-    // Aquí puedes mostrar una notificación o alerta al usuario si lo deseas
-  }
+
+    try {
+      // Filtrar proyectos para que cada usuario solo vea los suyos
+      const projectsQuery = query(collection(db, "projects"), where("owner", "==", currentUser.uid));
+      const querySnapshot = await getDocs(projectsQuery);
+
+      // Limpiar el dashboard antes de mostrar proyectos
+      projectsContainer.innerHTML = "";
+
+      querySnapshot.forEach(doc => {
+        const projectData = doc.data();
+        const projectCard = document.createElement("div");
+        projectCard.classList.add("project-card");
+        projectCard.innerHTML = `
+          <h3>${projectData.name}</h3>
+          <p>Metodología: ${methodologies[projectData.methodology]?.title || "Desconocida"}</p>
+          <p>Rol: ${projectData.role}</p>
+        `;
+        projectsContainer.appendChild(projectCard);
+      });
+
+      console.log("Proyectos cargados correctamente.");
+    } catch (err) {
+      console.error("Error al cargar proyectos:", err);
+    }
+  });
 }
