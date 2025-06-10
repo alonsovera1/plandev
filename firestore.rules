@@ -1,17 +1,15 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Reglas para la colección "projects"
-    match /projects/{projectId} {
-      allow read, write: if request.auth != null && request.auth.uid == resource.data.owner;
-    }
 
-    // Reglas para la colección "users" (si la tienes)
-    match /users/{userId} {
-      allow read, update, delete: if request.auth != null && request.auth.uid == userId;
-      allow create: if request.auth != null;
-      allow write: if request.auth != null && request.auth.uid == userId;
+    match /projects/{projectId} {
+      // Permitir crear solo si el usuario está autenticado y el dato enviado en owner coincide con su UID
+      allow create: if request.auth != null &&
+                    request.auth.uid == request.resource.data.owner;
+      
+      // Permitir leer, actualizar y eliminar solo sus propios proyectos
+      allow read, update, delete: if request.auth != null &&
+                                   request.auth.uid == resource.data.owner;
     }
   }
 }

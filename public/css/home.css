@@ -280,12 +280,12 @@ Main Dashboard
 .dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* Centra horizontalmente el contenido */
+  align-items: center;
   justify-content: center;
-  padding: 30px 20px 20px; /* Espacio para el header y márgenes internos */
+  padding: 30px 20px 20px;
   transition: margin-left 0.3s ease, width 0.3s ease;
-  margin: 90px auto 20px;   /* Se centra horizontalmente */
-  width: calc(100% - 270px);/* Ancho disponible cuando el aside está visible */
+  margin: 90px auto 20px;
+  width: calc(100% - 270px);
 }
 
 
@@ -305,7 +305,7 @@ Main Dashboard
 
 /* Etiqueta de ayuda */
 #empty-dashboard p.help-text {
-  margin-top: 60px;  /* Lo posiciona más abajo */
+  margin-top: 60px;
   font-size: 18px;
   color: #555;
 }
@@ -313,7 +313,7 @@ Main Dashboard
 /* Botón animado "Guía de inicio" */
 .animated-guide-btn {
   display: block;
-  margin: 40px auto 20px auto;  /* Se coloca más abajo (40px de margen superior) y centrado */
+  margin: 40px auto 20px auto;
   background-color: #4A90E2;
   color: #fff;
   border: 2px solid transparent;
@@ -323,7 +323,6 @@ Main Dashboard
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  /* Aplicar la animación de pulso/brillo */
   animation: pulseGlow 2s infinite;
 }
 
@@ -366,7 +365,7 @@ Main Dashboard
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -563,4 +562,11 @@ body.dark-mode .dropdown-menu a:hover {
 
 .methodology-btn:hover, .role-btn:hover {
   background-color: #357ABD;
+}
+
+/* Mostrar proyectos creados en dashboard */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }

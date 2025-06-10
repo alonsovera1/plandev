@@ -1,4 +1,3 @@
-// methodologies.js
 export const methodologies = {
   scrum: {
     title: "Scrum",

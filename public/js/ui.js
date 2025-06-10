@@ -1,5 +1,3 @@
-/* Archivo: public/js/ui.js */
-
 document.addEventListener('DOMContentLoaded', () => {
   // Menú de hamburguesa
   const hamburger = document.querySelector('.hamburger-menu');

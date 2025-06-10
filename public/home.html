@@ -45,11 +45,9 @@
       </div>
   </header>
   
-  <!-- Panel lateral fijo -->
+  <!-- Panel lateral -->
   <aside class="side-tools">      
-      <!-- Botones principales en el panel lateral -->
       <div class="side-buttons">
-          <!-- Botón de Inicio agregado por encima de "Crear un proyecto" -->
           <button id="btn-home" title="Inicio">
               <i class="fas fa-home"></i>
               <span>Inicio</span>
@@ -74,21 +72,20 @@
   
   <!-- MAIN: Dashboard principal donde se mostrarán los proyectos y demás contenido dinámico -->
   <main class="dashboard">
-      <!-- Estado vacío: solo para usuarios nuevos -->
-      <section id="empty-dashboard">
-          <h2>Bienvenido a PlanDev</h2>
-          <p>Aquí podrás crear y planificar tus proyectos.</p>
-          <p class="help-text">¿Necesitas ayuda para comenzar? Usa nuestra Guía de inicio.</p>
-          <button id="btn-start-guide" class="animated-guide-btn">
-              Guía de inicio
-          </button>
-      </section>
-      
-      <!-- Contenedor para visualizar los proyectos creados -->
-      <section id="projectsContainer" class="projects-section">
-          <h2>Mis Proyectos Recientes</h2>
-          <div id="project-cards" class="cards-container"></div>
-      </section>
+    <!-- Estado vacío: solo para usuarios nuevos -->
+    <section id="empty-dashboard">
+        <h2>Bienvenido a PlanDev</h2>
+        <p>Aquí podrás crear y planificar tus proyectos.</p>
+        <p class="help-text">¿Necesitas ayuda para comenzar? Usa nuestra Guía de inicio.</p>
+        <button id="btn-start-guide" class="animated-guide-btn">
+            Guía de inicio
+        </button>
+    </section>    
+    <section id="projectCreationContainer" style="display:none;"></section>
+    <section id="projectsContainer" class="projects-section">
+        <h2>Mis Proyectos Recientes</h2>
+        <div id="project-cards" class="cards-container"></div>
+    </section>
   </main>
 
   <script type="module" src="./js/ui.js"></script>

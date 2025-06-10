@@ -1,5 +1,3 @@
-/* Archivo: public/js/home.js */
-
 import { logoutUser } from "./auth.js";
 import { loadProjects } from "./projects.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
@@ -18,10 +16,7 @@ function getInitialsFromEmail(email) {
   return initials;
 }
 
-// -------------------------
-// Función para abrir/contraer el menú del perfil
-// (Se mantiene esta lógica; el aside ya no se contrae porque hemos eliminado la función de colapso)
-// -------------------------
+// Función para abrir/contraer el menú del perfil ??
 function setupProfileMenu() {
   const profileIcon = document.querySelector('.profile-icon');
   const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -50,9 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// -------------------------
 // Función principal que inicializa la UI del Home
-// -------------------------
 export function initHome() {
   console.log("Inicializando la vista Home...");
 
@@ -62,10 +55,10 @@ export function initHome() {
         guideBtn.addEventListener("click", (e) => {
             e.preventDefault();
             alert("Aquí se iniciaría la guía de inicio.");
-            // Puedes redirigir a otra vista o mostrar contenido dinámico según tu aplicación.
+            // Se puede redirigir a otra vista o mostrar contenido dinámico
         });
     }
-    
+
   // Configurar el botón de cerrar sesión
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
@@ -148,7 +141,27 @@ export function initHome() {
 
   // Llamar a la función para abrir/contraer el menú de perfil
   setupProfileMenu();
+
+  
 }
 
 // Un único listener para DOMContentLoaded
 document.addEventListener("DOMContentLoaded", initHome);
+
+
+// Crear un nuevo proyecto: Invocar el flujo de creación
+import { initProjectCreationFlow } from "./projectCreation.js";
+
+const createProjectBtn = document.getElementById("btn-create-project");
+if (createProjectBtn) {
+  createProjectBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Opcional: ocultar el contenido actual del dashboard (por ejemplo, el estado vacío)
+    const emptyDashboard = document.getElementById("empty-dashboard");
+    if (emptyDashboard) {
+      emptyDashboard.style.display = "none";
+    }
+    // Inicia el flujo de creación (el contenedor "projectCreationContainer" debe existir en el HTML)
+    initProjectCreationFlow();
+  });
+}
