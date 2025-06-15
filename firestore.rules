@@ -2,14 +2,38 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Reglas para proyectos
     match /projects/{projectId} {
-      // Permitir crear solo si el usuario está autenticado y el dato enviado en owner coincide con su UID
+      // Permitir crear solo si el usuario está autenticado y es el dueño
       allow create: if request.auth != null &&
                     request.auth.uid == request.resource.data.owner;
-      
-      // Permitir leer, actualizar y eliminar solo sus propios proyectos
+
+      // Leer, actualizar y eliminar solo si es su dueño
       allow read, update, delete: if request.auth != null &&
                                    request.auth.uid == resource.data.owner;
     }
+
+    // Reglas para el perfil del usuario
+    match /userProfiles/{userId} {
+      // Solo el usuario autenticado puede leer y escribir su propio perfil
+      allow read, write: if request.auth != null &&
+                         request.auth.uid == userId;
+    }
+
+    // Reglas para guardar respuestas de la encuesta
+    match /surveyResponses/{responseId} {
+      // Solo usuarios autenticados pueden crear respuestas (no leer por defecto)
+      allow create: if request.auth != null;
+
+      // Permitir lectura para que el usuario acceda a sus respuestas
+      allow read: if false;
+    }
+
+    // Denegar todo lo demás por defecto
+    match /{document=**} {
+      allow read, write: if false;
+    }
   }
 }
+
+

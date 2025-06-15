@@ -1,98 +1,53 @@
-// Encuesta
-
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { auth, db } from "./firebase-config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Espera el estado de autenticación usando onAuthStateChanged
   auth.onAuthStateChanged(async (currentUser) => {
     if (!currentUser) {
-      // Si no hay usuario, redirige a index.html
       window.location.href = "index.html";
       return;
     }
-    
-    // Consultar el perfil del usuario en Firestore
-    const userProfileRef = doc(db, "userProfiles", currentUser.uid);
-    let userProfileSnap = await getDoc(userProfileRef);
 
-    if (userProfileSnap.exists()) {
-      const profileData = userProfileSnap.data();
-      if (profileData.surveyCompleted === true) {
-        // Si ya completó la encuesta, redirige a home.html
+    const profileRef = doc(db, "userProfiles", currentUser.uid);
+    const profileSnap = await getDoc(profileRef);
+
+    if (profileSnap.exists()) {
+      const data = profileSnap.data();
+      if (data.surveyCompleted) {
         window.location.href = "home.html";
         return;
       }
     } else {
-      // Si no existe documento de perfil, lo creamos asumiendo que aún no completó la encuesta
-      await setDoc(userProfileRef, {
+      await setDoc(profileRef, {
         surveyCompleted: false,
         email: currentUser.email,
         createdAt: new Date()
       });
-      // Actualizamos la variable para uso futuro (opcional)
-      userProfileSnap = await getDoc(userProfileRef);
     }
 
-    // Agregar event listeners a cada opción para gestionar la selección
-    const optionCards = document.querySelectorAll('.option-card');
-    optionCards.forEach(card => {
-      card.addEventListener('click', function () {
-        const parentQuestion = this.closest('.question');
-        // Selecciona todas las opciones de la pregunta
-        const allOptionCards = parentQuestion.querySelectorAll('.option-card');
-        
-        // Si la pregunta tiene más de 4 opciones, permite selección múltiple:
-        if (allOptionCards.length > 4) {
-          this.classList.toggle('selected');
-        } else {
-          // Si la pregunta tiene 4 o menos opciones, permite solo selección única:
-          allOptionCards.forEach(el => el.classList.remove('selected'));
-          this.classList.add('selected');
-        }
-        
-        // Manejo del input "otro"
-        if (this.getAttribute('data-value').toLowerCase() === 'otro') {
-          const otherInput = parentQuestion.querySelector('.other-input');
-          if (otherInput) {
-            if (this.classList.contains('selected')) {
-              otherInput.style.display = 'block';
-            } else {
-              otherInput.style.display = 'none';
-            }
-          }
-        } else {
-          // En preguntas con selección múltiple, si se hace clic en otra opción, se oculta el input "otro"
-          const otherInput = parentQuestion.querySelector('.other-input');
-          if (otherInput) {
-            otherInput.style.display = 'none';
-          }
-        }
-      });
-    });
-
-    // Si el usuario está autenticado y es nuevo (no completó la encuesta), continúa con la configuración de la encuesta
     const questions = Array.from(document.querySelectorAll(".question"));
     let currentIdx = 0;
     const total = questions.length;
     const progressFill = document.querySelector(".progress-fill");
     const currentQuestionDisplay = document.getElementById("currentQuestion");
     const totalQuestionsDisplay = document.getElementById("totalQuestions");
-    totalQuestionsDisplay.textContent = total;
-
     const nextBtn = document.getElementById("nextBtn");
     const prevBtn = document.getElementById("prevBtn");
     const submitBtn = document.getElementById("submitBtn");
+
+    if (!submitBtn) {
+      console.error("Botón de envío no encontrado.");
+      return;
+    }
+
+    totalQuestionsDisplay.textContent = total;
 
     function showQuestion(idx) {
       questions.forEach((q, i) => {
         q.style.display = (i === idx) ? "block" : "none";
       });
       currentQuestionDisplay.textContent = idx + 1;
-      progressFill.style.width = (((idx + 1) / total) * 100) + "%";
-
-      const navigation = document.querySelector(".survey-navigation");
-      navigation.style.justifyContent = (idx === 0) ? "flex-end" : "space-between";
+      progressFill.style.width = `${((idx + 1) / total) * 100}%`;
 
       nextBtn.style.display = (idx === total - 1) ? "none" : "inline-block";
       submitBtn.style.display = (idx === total - 1) ? "inline-block" : "none";
@@ -115,11 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Guardar respuestas y marcar encuesta como completada
     submitBtn.addEventListener("click", async () => {
-      let responses = {};
+      submitBtn.disabled = true; // evita envíos múltiples
+      const responses = {};
       questions.forEach((q) => {
         const qid = q.id;
-        let selected = [];
+        const selected = [];
         q.querySelectorAll(".option-card.selected").forEach((opt) => {
           let val = opt.getAttribute("data-value");
           if (val.toLowerCase().includes("otro")) {
@@ -134,17 +91,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       try {
+        // Guardar respuestas en Firestore
         await addDoc(collection(db, "surveyResponses"), {
           userId: currentUser.uid,
-          responses: responses,
+          responses,
           createdAt: new Date()
         });
-        // Actualiza el perfil para marcar que la encuesta fue completada
-        await updateDoc(userProfileRef, { surveyCompleted: true });
+        console.log("Respuestas de encuesta guardadas.");
+
+        // Actualizar perfil indicando encuesta completada
+        await updateDoc(profileRef, { surveyCompleted: true });
+        console.log("Perfil actualizado: encuesta completada.");
+
         window.location.href = "home.html";
       } catch (error) {
-        console.error("Error al guardar la encuesta:", error);
-        // mostrar un mensaje de error
+        console.error("Error guardando la encuesta:", error);
+        alert("No se pudo enviar la encuesta. Intenta otra vez.");
+        submitBtn.disabled = false; // permitir reintentos
       }
     });
   });
