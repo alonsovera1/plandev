@@ -85,6 +85,8 @@ h2 {
   flex-wrap: wrap;
   gap: 10px;
 }
+
+/* Opciones para selección */
 .option-card {
   background-color: #f1f1f1;
   border: 1px solid #ccc;
@@ -92,13 +94,21 @@ h2 {
   padding: 10px 15px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
+
 .option-card:active {
   background-color: #4A90E2;
   color: #fff;
   border-color: #0056b3;
 }
+
+.option-card:hover {
+  background-color: #4A90E2; /* Cambia el color de fondo al pasar el mouse */
+  color: #fff; /* Cambia el color del texto al pasar el mouse */
+}
+
 .option-card.selected {
   background-color: #4A90E2;
   color: #fff;
@@ -120,8 +130,16 @@ h2 {
 .survey-navigation {
   display: flex;
   justify-content: space-between;
+  padding: 0 20px;
   margin-top: 20px;
 }
+
+/* Margen izquierdo para todos los botones excepto el primero */
+.survey-navigation button:not(:first-child) {
+  margin-left: 10px;
+}
+
+/* Estilos para botones */
 .survey-navigation button {
   padding: 10px 20px;
   font-size: 16px;
@@ -132,7 +150,16 @@ h2 {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  min-width: 100px;
+  min-width: 100px;
 }
+
+.survey-navigation:has(#prevBtn[style*="display: none;"]) {
+  /* Si el botón Anterior está oculto, se alinea el botón Siguiente a la derecha */
+  justify-content: flex-end;
+  padding-right: 60px;
+}
+
 .survey-navigation button:hover {
   background-color: #0056b3;
 }
@@ -141,5 +168,9 @@ h2 {
 @media (max-width: 768px) {
   .survey-layout {
     flex-direction: column;
+  }
+
+  .survey-navigation {
+    justify-content: center;
   }
 }

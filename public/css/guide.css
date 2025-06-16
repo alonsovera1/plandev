@@ -1,3 +1,5 @@
+/* Estilos de modal Guia de inicio */
+
 /* Modal base: se oculta por defecto y se despliega al activar la guía */
 
 .modal {
@@ -22,7 +24,7 @@
   width: 80%;
   max-width: 600px;
   position: relative;
-  animation: slideDown 0.5s ease;
+  /* animation: slideDown 0.5s ease; */
 }
 
 /* Animación para la apertura del modal */

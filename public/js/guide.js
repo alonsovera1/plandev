@@ -1,5 +1,3 @@
-/* Archivo: public/js/guide.js */
-
 document.addEventListener('DOMContentLoaded', () => {
   const guideModal = document.getElementById('guideModal');
   const btnStartGuide = document.getElementById('btn-start-guide');
@@ -15,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.classList.toggle('active', idx === index);
     });
     // Actualizar el estado de los botones de navegación
-    if (prevSlide) prevSlide.disabled = index === 0;
-    if (nextSlide) nextSlide.disabled = index === slides.length - 1;
+    prevSlide.disabled = index === 0; // Deshabilitar "Anterior" en la primera slide
+    nextSlide.disabled = index === slides.length - 1; // Deshabilitar "Siguiente" en la última slide
   }
 
-  // Abrir el modal al hacer clic en el botón "Guía de inicio"
+  // Abrir modal al hacer clic en "Guía de inicio"
   if (btnStartGuide) {
     btnStartGuide.addEventListener('click', () => {
       guideModal.style.display = 'block';
@@ -28,22 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cerrar el modal al pulsar la "X"
+  // Cerrar modal al hacer clic en la X
   if (closeModal) {
     closeModal.addEventListener('click', () => {
       guideModal.style.display = 'none';
     });
   }
 
-  // Si existe un botón "Salir" dentro del último slide, también lo cierra
-  const exitButton = document.querySelector('.exit-guide');
-  if (exitButton) {
-    exitButton.addEventListener('click', () => {
-      guideModal.style.display = 'none';
-    });
-  }
-
-  // Navegación: botón "Anterior"
+  // Botón "Anterior"
   if (prevSlide) {
     prevSlide.addEventListener('click', () => {
       if (currentSlide > 0) {
@@ -53,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Navegación: botón "Siguiente"
+  // Botón "Siguiente"
   if (nextSlide) {
     nextSlide.addEventListener('click', () => {
       if (currentSlide < slides.length - 1) {
@@ -63,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cerrar el modal si se hace clic fuera del contenido del modal
+  // Cerrar modal al hacer clic fuera del contenido
   window.addEventListener('click', (event) => {
     if (event.target === guideModal) {
       guideModal.style.display = 'none';
