@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Abrir modal al hacer clic en "Guía de inicio"
   if (btnStartGuide) {
-    btnStartGuide.addEventListener('click', () => {
+    btnStartGuide.addEventListener('click', (e) => {
+      e.preventDefault();
       guideModal.style.display = 'block';
       currentSlide = 0;
       showSlide(currentSlide);
@@ -60,3 +61,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+

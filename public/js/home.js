@@ -102,15 +102,6 @@ export function initHome() {
     });
   }
 
-  // Botón de guía
-  const guideBtn = document.getElementById("btn-start-guide");
-  if (guideBtn) {
-    guideBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      alert("Aquí se iniciaría la guía de inicio.");
-    });
-  }
-
   // Botón de sugerencias
   const feedbackBtn = document.getElementById("btn-feedback");
   if (feedbackBtn) {

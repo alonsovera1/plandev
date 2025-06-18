@@ -86,8 +86,66 @@
         <div id="project-cards" class="cards-container"></div>
     </section>
   </main>
+  <!-- Modal de Guía de Inicio -->
+<div id="guideModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-slides">
+            <div class="slide active">
+                <h2>Bienvenido a PlanDev</h2>
+                <p>Esta guía te ayudará a crear y planificar tus proyectos de software de manera efectiva.</p>
+            </div>
+            <div class="slide">
+                <h2>Paso 1: Crear un Proyecto</h2>
+                <p>Haz clic en "Crear un proyecto" para comenzar. Asegúrate de elegir un nombre único para tu proyecto.</p>
+            </div>
+            <div class="slide">
+                <h2>Paso 2: Seleccionar un Modelo de Desarrollo</h2>
+                <p>Elige entre metodologías, marcos de trabajo y métodos de desarrollo que se adapten a tus necesidades. Puedes optar por enfoques ágiles como Scrum o Kanban, o metodologías tradicionales como Cascada.</p>
+            </div>
+            <div class="slide">
+                <h2>Paso 3: Definir Roles</h2>
+                <p>Selecciona los roles que desempeñarán los miembros de tu equipo. Cada rol tiene responsabilidades específicas que ayudarán a la colaboración.</p>
+            </div>
+            <div class="slide">
+                <h2>Paso 4: Usar el Botón "Equipos"</h2>
+                <p>Utiliza el botón "Equipos" para gestionar a los miembros de tu proyecto. Puedes agregar o eliminar miembros y asignar roles específicos.</p>
+            </div>
+            <div class="slide">
+                <h2>Tips: Sugerencias y Reportes</h2>
+                <p>Si encuentras errores o tienes recomendaciones, utiliza el botón "Sugerencias" para reportarlos. Tu feedback es importante para mejorar la aplicación.</p>
+            </div>
+            <div class="slide">
+                <h2>Tips: Recursos Adicionales</h2>
+                <p>Accede a los enlaces de recursos para obtener más información sobre metodologías y roles en el desarrollo de software colaborativo.</p>
+            </div>
+            <div class="slide">
+                <h2>Tips: Notificaciones y Perfil de Usuario</h2>
+                <p>Revisa las notificaciones para estar al tanto de actualizaciones en tus proyectos. También puedes acceder a tu perfil para gestionar tu información personal.</p>
+            </div>
+            <div class="slide">
+                <h2>Tips: Tema Oscuro</h2>
+                <p>Personaliza tu experiencia visual desde el menú de configuración</p>
+            </div>
+            <div class="slide">
+                <h2>Tips: Preguntas Frecuentes</h2>
+                <p>Consulta la sección de "Preguntas Frecuentes" para obtener información básica sobre el funcionamiento de la aplicación y cómo crear un proyecto.</p>
+            </div>
+            <div class="slide">
+                <h2>¡Listo para Comenzar!</h2>
+                <p>Ahora que conoces las herramientas y funciones, ¡estás listo para comenzar a trabajar en tu proyecto!</p>
+            </div>
+        </div>
+        <div class="modal-nav">
+            <button id="prevSlide" disabled>Anterior</button>
+            <button id="nextSlide">Siguiente</button>
+        </div>
+    </div>
+</div>
+
   <script type="module" src="./js/ui.js"></script>
   <script type="module" src="./js/home.js"></script>
+  <script type="module" src="./js/guide.js"></script>
   <script type="module" src="./js/projects.js"></script>
 </body>
 </html>

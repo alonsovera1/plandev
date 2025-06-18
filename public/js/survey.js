@@ -1,3 +1,5 @@
+// Logica de la encuesta
+
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { auth, db } from "./firebase-config.js";
 
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalQuestionsDisplay.textContent = total;
 
-    // Lista de preguntas de selección única (4 o menos opciones)
+    // Lista de preguntas de selección única
     const singleSelectionQuestions = ['q3', 'q5', 'q9', 'q11', 'q12', 'q13', 'q14', 'q15'];
 
     // Función para mostrar la pregunta actual y manejar botones
@@ -53,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.style.display = (idx === total - 1) ? "inline-block" : "none";
       prevBtn.style.display = (idx === 0) ? "none" : "inline-block";
 
-      // Siempre mostrar "Siguiente" a la derecha (CSS debe manejar la posición)
     }
 
     showQuestion(currentIdx);
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (otherInput) {
               otherInput.style.display = "none";
               otherInput.value = "";
-              // Si ocultamos input "Otro", también desmarcamos "Otro" si estaba seleccionado previamente (por seguridad)
+              // Si se oculta input "Otro", también desmar "Otro" si estaba seleccionado previamente
               options.forEach(opt => {
                 if(opt.getAttribute("data-value") && opt.getAttribute("data-value").toLowerCase() === "otro"){
                   opt.classList.remove("selected");
@@ -145,8 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (inpt && inpt.style.display === "block" && inpt.value.trim() !== "") {
               val = inpt.value.trim(); // Guardar el valor del input "Otro"
             } else {
-              // Si no hay texto en input "Otro", podemos no guardar o guardar "Otro" literal
-              // Aquí decidimos no guardar esta opción si está vacía
               val = null;
             }
           }
