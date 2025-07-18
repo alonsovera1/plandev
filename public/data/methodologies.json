@@ -1,0 +1,14 @@
+[
+  {
+    "id": "scrum",
+    "title": "Scrum",
+    "shortDescription": "Iteraciones rápidas, adaptación.",
+    "fullDescription": "Scrum es un marco ágil que promueve ciclos cortos..."
+  },
+  {
+    "id": "xp",
+    "title": "Extreme Programming",
+    "shortDescription": "Calidad por pruebas, feedback continuo.",
+    "fullDescription": "XP enfatiza la calidad del código mediante prácticas como TDD, pair programming..."
+  }
+]

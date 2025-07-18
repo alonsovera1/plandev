@@ -1,0 +1,21 @@
+{
+  "scrum": [
+    {
+      "name": "Product Owner",
+      "description": "Maximiza el valor del producto...",
+      "profiles": ["Analista de Negocios", "Gerente de Producto"]
+    },
+    {
+      "name": "Scrum Master",
+      "description": "Facilita el proceso Scrum...",
+      "profiles": ["Coach Ágil", "Facilitador"]
+    }
+  ],
+  "xp": [
+    {
+      "name": "Programador XP",
+      "description": "Desarrolla con TDD y pair programming.",
+      "profiles": ["Frontend", "Backend", "Fullstack"]
+    }
+  ]
+}
